@@ -39,27 +39,27 @@ angular.module('baseModule')
       })
     /* LEAGUES ROUTES*/
     .when('/leaguesSilverPremier', {
-        templateUrl: 'components/leagues//leaguesDetails.html',
+        templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //silverPremierCtrl
     })
-    .when('leaguesPlatinumPremier', {
-        templateUrl: 'components/leagues//leaguesDetails.html',
+    .when('/leaguesPlatinumPremier', {
+        templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //platinumPremierCtrl
     })
-    .when('leaguesDiamondPremier', {
-        templateUrl: 'components/leagues//leaguesDetails.html',
+    .when('/leaguesDiamondPremier', {
+        templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //diamondPremierCtrl
     })
     .when('/leaguesSilverOpen', {
-        templateUrl: 'components/leagues//leaguesDetails.html',
+        templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //silverOpenCtrl
     })
-    .when('leaguesPlatinumOpen', {
-        templateUrl: 'components/leagues//leaguesDetails.html',
+    .when('/leaguesPlatinumOpen', {
+        templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //platinumOpenCtrl
     })
-    .when('leaguesDiamondOpen', {
-        templateUrl: 'components/leagues//leaguesDetails.html',
+    .when('/leaguesDiamondOpen', {
+        templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //diamondOpenCtrl
     })
       .otherwise({
