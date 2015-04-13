@@ -14,7 +14,7 @@ angular.module('baseModule')
       })
       .when('/leagues', {
         templateUrl: 'components/leagues/leagues.html',
-        controller: 'HomeCtrl' //leaguesCtrl
+        controller: 'LeaguesCtrl' //leaguesCtrl
       })
       .when('/news', {
         templateUrl: 'components/news/news.html',

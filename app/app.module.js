@@ -9,6 +9,7 @@
 
 // Components
 angular.module('homeModule', [])
+angular.module('leagueModule', [])
 
 // Shared
 angular.module('sliderModule', [])
@@ -21,5 +22,6 @@ angular.module('baseModule', [
     'ngSanitize',
     'ngTouch',
     'homeModule',
-    'sliderModule'
+    'sliderModule',
+    'leagueModule'
   ])

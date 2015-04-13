@@ -1,1 +1,9 @@
 <h1>leagues</h1>
+
+<p>Summoner: <input ng-model="searchName" placeholder="Name"/>
+  <button type='button' ng-click="search()">Search</button>
+</p>
+
+<div class="list-group">
+  <a href="#" class="list-group-item" ng-repeat="match in matches">{{timeConvert(match.createDate)}} <br/> <img ng-repeat="im in match.images" ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{im}}" style="width:8%;"></a>
+</div>
