@@ -1,0 +1,528 @@
+/*
+  START: General Stuff
+*/
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	min-width: 1024px;
+	background-color: #FFFFFF;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	overflow-y: scroll;
+	color: #808080;
+}
+
+h1, h3{
+	font-weight: lighter;
+	text-align: center;
+}
+
+h4{
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+	margin: 25px;
+	margin-left: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: #808080;
+}
+
+.clear{
+	clear: both;
+}
+
+.spacer{
+	height: 50px;
+}
+
+.bigSpacer{
+	height: 300px;
+}
+
+.textContent{
+	text-align: left;
+	line-height: 150%;
+  padding: 50px;
+}
+
+.textContent h2{
+	text-align: center;
+	color: #FFFFFF;
+	padding: 5px;
+	background-color: #3e3e3e;
+	background: #515151; /* Old browsers */
+	background: -moz-linear-gradient(left,  #515151 0%, #191919 50%, #515151 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515151), color-stop(50%,#191919), color-stop(100%,#515151)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* IE10+ */
+	background: linear-gradient(to right,  #515151 0%,#191919 50%,#515151 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
+
+	border-radius: 15px;
+
+	margin-top: 25px;
+	margin-bottom: 25px;
+
+}
+
+.textCentered {
+	text-align: center;
+}
+
+.tall{
+	font-size: 16px;
+}
+
+.indent{
+	margin-top: 5px;
+	margin-left: 25px;
+}
+
+.button{
+	height: 60px;
+	width: 150px;
+	padding-left: 5px;
+	padding-right: 5px;
+	cursor: pointer;
+	/* background-color: #515151;
+	color: #f0eded;*/
+	color: #FFFFFF;
+	border-radius: 5px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 5px;
+
+
+	background-color: #3e3e3e;
+	background: #515151; /* Old browsers */
+	background: -moz-linear-gradient(left,  #515151 0%, #191919 50%, #515151 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515151), color-stop(50%,#191919), color-stop(100%,#515151)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* IE10+ */
+	background: linear-gradient(to right,  #515151 0%,#191919 50%,#515151 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
+}
+
+.button:hover{
+	background-color: #6b6b6b;
+	background: #515151; /* Old browsers */
+	background: -moz-linear-gradient(left,  #515151 0%, #6b6b6b 50%, #515151 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515151), color-stop(50%,#6b6b6b), color-stop(100%,#515151)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #515151 0%,#6b6b6b 50%,#515151 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #515151 0%,#6b6b6b 50%,#515151 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #515151 0%,#6b6b6b 50%,#515151 100%); /* IE10+ */
+	background: linear-gradient(to right,  #515151 0%,#6b6b6b 50%,#515151 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
+}
+
+
+/*
+  END: General Stuff
+  START: Main Template
+*/
+
+#background{
+  position: absolute;
+  background-image: url("../images/background.png");
+  background-color: #FFFFFF;
+  width: 100%;
+  min-height: 980px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1000;
+}
+
+#wrapper{
+	background-color: #f0eded;
+	margin: 0px auto;
+  margin-top: -20px;
+	width: 1024px;
+	/* width: 1200px; */
+	border: #808080 3px solid;
+	border-top: 0px;
+  min-height: 600px;
+}
+
+/*HEADER AND NAV BAR*/
+
+header{
+	margin: 0px auto;
+	background-color: #f0eded;
+	min-width: 1024px;
+	width: 1024px;
+  height: 260px;
+	/* width: 1200px; */
+	max-width: 3840px;
+	border: #808080 3px solid;
+	border-bottom: 0px;
+	border-top: 0px;
+	color: #FFFFFF;
+}
+
+header a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+header a:hover{
+	color: #808080;
+}
+
+#navBar{
+	position: fixed;
+	left: 50%;
+	width: 1024px;
+	margin-left: -512px;
+	background-color: #3e3e3e;
+	height: 50px;
+	background: #515151; /* Old browsers */
+	background: -moz-linear-gradient(left,  #515151 0%, #191919 50%, #515151 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515151), color-stop(50%,#191919), color-stop(100%,#515151)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* IE10+ */
+	background: linear-gradient(to right,  #515151 0%,#191919 50%,#515151 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
+
+
+
+	z-index: 100;
+}
+
+header ul{
+	list-style-type: none;
+}
+
+header li{
+	float: left;
+}
+
+#logo{
+	width: 450px;
+	height: 180px;
+	margin: 0px auto;
+	padding-top: 70px;
+}
+
+#leftNav{
+	float: left;
+	font-weight: bold;
+}
+#serverNav{
+	padding: 10px;
+	padding-top: 0px;
+	color: #FFFFFF;
+}
+#socialMediaNav{
+	margin-top: -18px;
+	padding-left: 8px;
+}
+#socialMediaNav li img{
+	width: 25px;
+	height: 25px;
+}
+
+#twitchNav{
+	margin-top: 27px;
+	margin-left: 20px;
+	width: auto;
+}
+
+#twitchNavOff{
+	height: 8px;
+	width: 8px;
+	margin-left: 137px;
+	margin-top: 7px;
+	border-radius: 25px;
+	background-color: #BDBDBD;
+}
+
+#twitchNavLive{
+	height: 8px;
+	width: 8px;
+	margin-left: 137px;
+	margin-top: 7px;
+	border-radius: 25px;
+	background-color: #FF0000;
+}
+
+#twitchNavImage{
+	background-color: #A366E0;
+	border-radius: 5px;
+	height: 23px !important;
+	width: 23px  !important;
+}
+
+#rightNav{
+	float: right;
+}
+
+#userNav{
+	font-weight: bold;
+	color: #FFFFFF;
+  float: right;
+  margin-top: -5px;
+}
+
+#userNavCheers{
+	font-weight: bold;
+	color: #FFFFFF;
+  margin-top: -10px;
+}
+
+#userNav li{
+	padding: 10px;
+}
+
+#userControls{
+	float: right;
+	padding-right: 10px;
+	margin-top: 0px;
+}
+#nav{
+	margin: 0px auto;
+	padding-top: 5px;
+	width: 570px;
+}
+
+#nav li{
+	padding: 10px;
+}
+#nav li a{
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: none;
+}
+#nav li a:hover{
+	color: #808080;
+}
+
+/* FOOTER */
+
+#sponsorBox{
+	margin: 0px auto;
+	width: 1024px;
+	min-height: 200px;
+	background-color: #a19f9f;
+}
+
+
+#ourSponsorsBGFirstPart{
+	padding: 10px;
+	width: 90px;
+	background-color: snow;
+	color: snow;
+	font-size: 16px;
+	float: left;
+	border: 1px solid #000000;
+	border-right: 0px;
+	border-left: 0px;
+	margin-top: -20px;
+}
+
+#ourSponsorsBGSecondPart{
+	padding: 10px;
+	width: 120px;
+	background-color: snow;
+	float: left;
+	margin-left: -15px;
+	border: 1px solid #000000;
+	border-left: 0px;
+	margin-top: -20px;
+
+
+	-webkit-transform: skew(-30deg);
+	-moz-transform: skew(-30deg);
+	-o-transform: skew(-30deg);
+
+}
+#sponsorBox h6{
+	text-align: left;
+	font-size: 16px;
+
+	-webkit-transform: skew(30deg);
+	-moz-transform: skew(30deg);
+	-o-transform: skew(30deg);
+}
+
+#firstSponsor{
+	height: 125px;
+	width: 125px;
+	background-image: url("../images/socialMedia/paypal_circle.png");
+	background-size: 125px 125px;
+	margin: 10px;
+	margin-left: 179.5px;
+	float: left;
+}
+
+#secondSponsor{
+	height: 125px;
+	width: 125px;
+	background-image: url("../images/socialMedia/twitter_circle.png");
+	background-size: 125px 125px;
+	margin: 10px;
+	float: left;
+}
+
+#thirdSponsor{
+	height: 125px;
+	width: 125px;
+	background-image: url("../images/socialMedia/reddit_circle.png");
+	background-size: 125px 125px;
+	margin: 10px;
+	float: left;
+}
+
+#fourthSponsor{
+	height: 125px;
+	width: 125px;
+	background-image: url("../images/socialMedia/twitch_circle.png");
+	background-size: 125px 125px;
+	margin: 10px;
+	float: left;
+}
+
+#fifthSponsor{
+	height: 125px;
+	width: 125px;
+	background-image: url("../images/socialMedia/youtube_circle.png");
+	background-size: 125px 125px;
+	margin: 10px;
+	float: left;
+}
+
+
+footer{
+	background-color: #f0eded;
+	margin: 0px auto;
+	width: 1024px;
+	min-height: 200px;
+	/* width: 1200px; */
+	border: #808080 3px solid;
+	border-top: 0px;
+	text-align: center;
+}
+
+.footerImage{
+	height: 125px;
+	width: 125px;
+	margin: 10px;
+	margin-top: -20px;
+}
+
+/* footer h2{
+	text-align: center;
+} */
+
+.footerNav{
+	margin-top: 10px;
+}
+
+.footerBottom{
+	margin-top: 10px;
+	padding-bottom: 5px;
+}
+
+.footerBottom hr{
+	width: 900px;
+	margin: 0px auto;
+	margin-bottom: 5px;
+}
+
+/*
+  LEAGUE BADGES
+*/
+
+#leagueBadgesContainer{
+	text-align: center;
+}
+.premierBadges{
+	list-style-type: none;
+	margin: 0px auto;
+	margin-bottom: 450px;
+	width: 900px;
+}
+
+.openBadges{
+	list-style-type: none;
+	margin: 0px auto;
+	width: 837px;
+	margin-top: 50px;
+	margin-bottom: 330px;
+}
+
+.premierBadges li, .openBadges li{
+	float: left;
+}
+
+.premierBadgeImg{
+	width: 300px;
+	height: 400px;
+}
+
+.openBadgeImg{
+	width: 279px;
+	height: 231px;
+}
+
+
+/*
+  END: League Badges
+  START: MAIN / HOME TEMPLATE
+    ==> SLIDER
+*/
+
+.slide.ng-hide-add,
+.slide.ng-hide-remove {
+  -webkit-transition: all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+  display: block!important;
+}
+.slide.ng-hide-add.ng-hide-add-active,
+.slide.ng-hide-remove {
+  opacity: 0;
+}
+.slide.ng-hide-add,
+.slide.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
+
+.slider {
+  position: relative;
+	margin-left: 0px;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.arrows {
+	position: relative;
+	z-index: 200;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+
+}

@@ -6,13 +6,20 @@
 
   Also make sure you include all Modules into the base module!
 */
+
+// Components
 angular.module('homeModule', [])
 
+// Shared
+angular.module('sliderModule', [])
+
+// Base module
 angular.module('baseModule', [
     'ngAnimate',
     'ngCookies',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'homeModule'
+    'homeModule',
+    'sliderModule'
   ])

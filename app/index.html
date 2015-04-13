@@ -21,17 +21,13 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-      <div class="header">
-        <h2>Header</h2>
-      </div>
-
-      <div ng-view=""></div>
-
-      <div class="footer">
-        <h2>Footer</h2>
-      </div>
-    </div>
+    <!-- <div class="container"> -->
+        <div ng-include="'components/header/header.html'"></div>
+        <div id="wrapper">
+          <div ng-view="" autoscroll="true"></div>
+        </div>
+        <div ng-include="'components/footer/footer.html'"></div>
+    <!-- </div> -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -69,6 +65,8 @@
         <script src="app.module.js"></script>
         <script src="app.routes.js"></script>
         <script src="components/home/home.js"></script>
+        <script src="shared/slider/sliderCtrl.js"></script>
+        <script src="shared/slider/sliderDirective.js"></script>
         <!-- endbuild -->
 </body>
 </html>
