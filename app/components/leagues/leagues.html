@@ -1,9 +1,315 @@
 <h1>leagues</h1>
 
-<p>Summoner: <input ng-model="searchName" placeholder="Name"/>
-  <button type='button' ng-click="search()">Search</button>
-</p>
+<div>
+  <div class="btn-group col-md-offset-1">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      Player to search for <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a ng-click="search(player)" ng-repeat="player in players">{{player}}</a></li>
+    </ul>
+  </div>
 
-<div class="list-group">
-  <a href="#" class="list-group-item" ng-repeat="match in matches">{{timeConvert(match.createDate)}} <br/> <img ng-repeat="im in match.images" ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{im}}" style="width:8%;"></a>
+  <div class="list-group">
+    <a href="#" class="list-group-item" ng-repeat="match in matches">{{timeConvert(match.createDate)}} <br/> <img ng-repeat="im in match.images" ng-src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/{{im}}" style="width:8%;"></a>
+  </div>
+
+  <div class="col-lg-6">
+    <h3>Team 1</h3>
+    <table class="table">
+      <tr>
+        <th>Role</th>
+        <th>Champion</th>
+        <th>Name</th>
+        <th>Kills</th>
+        <th>Deaths</th>
+        <th>Assists</th>
+        <th>CS</th>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team1.players.player1.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player1.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player1.kills" type="number" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player1.deaths" type="number" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player1.assists" type="number" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player1.CS" type="number" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team1.players.player2.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player2.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player2.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player2.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player2.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player2.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team1.players.player3.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player3.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player3.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player3.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player3.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player3.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team1.players.player4.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player4.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player4.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player4.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player4.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player4.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team1.players.player5.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player5.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player5.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player5.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player5.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team1.players.player5.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-lg-6">
+    <h3>Team 2</h3>
+    <table class="table">
+      <tr>
+        <th>Role</th>
+        <th>Champion</th>
+        <th>Name</th>
+        <th>Kills</th>
+        <th>Deaths</th>
+        <th>Assists</th>
+        <th>CS</th>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team2.players.player1.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player1.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player1.kills" type="number" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player1.deaths" type="number" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player1.assists" type="number" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player1.CS" type="number" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team1.players.player2.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player2.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player2.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player2.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player2.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player2.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team2.players.player3.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player3.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player3.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player3.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player3.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player3.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team2.players.player4.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player4.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player4.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player4.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player4.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player4.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <ui-select ng-model="gameData.team2.players.player5.role" theme="selectize" ng-disabled="disabled">
+              <ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="role in roles">
+                <span ng-bind-html="role.name"></span>
+              </ui-select-choices>
+          </ui-select>
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player5.name" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player5.kills" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player5.deaths" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player5.assists" type="text" class="form-control" aria-label="...">
+        </td>
+        <td>
+          <input ng-model="gameData.team2.players.player5.CS" type="text" class="form-control" aria-label="...">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="btn-group col-md-offset-1">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" ng-click="print()">
+      Output to Console
+    </button>
+  </div>
 </div>
