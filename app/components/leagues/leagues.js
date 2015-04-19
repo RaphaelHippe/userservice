@@ -7,7 +7,7 @@ module.controller('LeaguesCtrl', function ($scope, $http, ChampionImageService, 
   var data;
   var champions = [];
   $scope.loading;
-  $scope.gameData = {};
+  $scope.gameData;
   $scope.players = ["OberstK", "Mindmesser"];
   $scope.roles = [{name: "Top"},
                   {name: "Jungle"} ,
@@ -22,38 +22,10 @@ module.controller('LeaguesCtrl', function ($scope, $http, ChampionImageService, 
     $scope.player = player;
     $('#spinner').show();
     GameService.getGamesForPlayer(player).then(function(data){
-      $scope.gameData = data;
+      $scope.data = data;
       $scope.loading = false;
-      console.log($scope.gameData);
       $('#spinner').hide();
     });
-
-    /*$http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/'+player+'?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533').then(function(riotResponse) {
-      sumId = riotResponse.data[player.toLowerCase()].id;
-    }).then(function() {
-      console.log(sumId);
-      $http.get('https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/'+sumId+'/recent?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533').then(function(riotResponse) {
-        data = riotResponse.data["games"];
-
-        angular.forEach(data, function(game){
-          game.images = [];
-          var champions = [];
-          champions.push(game.championId);
-          for(var player in game.fellowPlayers){
-            champions.push(game.fellowPlayers[player].championId);
-          }
-          angular.forEach(champions, function(key){
-            console.log(key);
-            ChampionImageService.getImage(key).then(function(data) {
-              game.images.push(data);
-            });
-          });
-        });
-      }).then(function(){
-        $scope.matches = data;
-        console.log(data);
-      });
-    });*/
   }
 
   $scope.timeConvert = function(time){
@@ -63,6 +35,10 @@ module.controller('LeaguesCtrl', function ($scope, $http, ChampionImageService, 
 
   $scope.print = function(){
     console.log($scope.gameData);
+  }
+
+  $scope.chooseGame = function(game){
+    $scope.gameData = game;
   }
 });
 
@@ -131,7 +107,7 @@ module.directive('playerDataDir', function() {
         scope: false,
         template: function(elem, attr){
           return  '<tr>' +
-                  '<td ng-model="gameData.team'+attr.team+'.players.player'+attr.player+'.role">' +
+                  '<td ng-model="gameData.team'+attr.team+'.player'+attr.player+'.role">' +
                   '<ui-select theme="selectize" ng-disabled="disabled">'+
                   '<ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>' +
                   '<ui-select-choices repeat="role in roles">' +
@@ -143,19 +119,19 @@ module.directive('playerDataDir', function() {
                   '<img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">' +
                   '</td>' +
                   '<td>' +
-                  '<input ng-model="gameData.team'+attr.team+'.players.player'+attr.player+'.name" type="text" class="form-control" aria-label="...">' +
+                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.summonerId" type="text" class="form-control" aria-label="...">' +
                   '</td>' +
                   '<td>' +
-                  '<input ng-model="gameData.team'+attr.team+'.players.player'+attr.player+'.kills" type="text" class="form-control" aria-label="...">' +
+                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.kills" type="text" class="form-control" aria-label="...">' +
                   '</td>' +
                   '<td>' +
-                  '<input ng-model="gameData.team'+attr.team+'.players.player'+attr.player+'.deaths" type="text" class="form-control" aria-label="...">' +
+                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.deaths" type="text" class="form-control" aria-label="...">' +
                   '</td>' +
                   '<td>' +
-                  '<input ng-model="gameData.team'+attr.team+'.players.player'+attr.player+'.assists" type="text" class="form-control" aria-label="...">' +
+                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.assists" type="text" class="form-control" aria-label="...">' +
                   '</td>' +
                   '<td>' +
-                  '<input ng-model="gameData.team'+attr.team+'.players.player'+attr.player+'.CS" type="text" class="form-control" aria-label="...">' +
+                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.CS" type="text" class="form-control" aria-label="...">' +
                   '<td>' +
                   '</tr>'
         },

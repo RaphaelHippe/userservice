@@ -14,7 +14,7 @@
       </div>
       <p id="playerTitle" class="lead">Games for player "{{player}}"</p>
       <div class="list-group">
-        <a class="list-group-item" ng-repeat="game in gameData">{{timeConvert(game.time)}} <br/>
+        <a ng-click="chooseGame(game)" class="list-group-item" ng-repeat="game in data">{{timeConvert(game.time)}} <br/>
           <img ng-repeat="im in game.team1" ng-src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{im.image}}" style="width:8%;">
           <img src ="assets/images/versus.png" style="width:8%;">
           <img ng-repeat="im in game.team2" ng-src="http://ddragon.leagueoflegends.com/cdn/5.7.1/img/champion/{{im.image}}" style="width:8%;">
