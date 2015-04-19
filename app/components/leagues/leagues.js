@@ -1,13 +1,13 @@
 var module = angular.module('leagueModule', ['ui.select', 'ngSanitize']);
 
-module.controller('LeaguesCtrl', function ($scope, $http, ChampionImageService, GameService) {
+module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionService, PlayerService) {
   $('#spinner').hide();
   $('#playerTitle').hide();
   var sumId;
   var data;
-  var champions = [];
   $scope.loading;
   $scope.gameData;
+  $scope.player;
   $scope.players = ["OberstK", "Mindmesser"];
   $scope.roles = [{name: "Top"},
                   {name: "Jungle"} ,
@@ -15,7 +15,10 @@ module.controller('LeaguesCtrl', function ($scope, $http, ChampionImageService, 
                   {name: "ADC"},
                   {name: "Support"}
                   ];
-  $scope.player;
+
+  ChampionService.getAllChampions().then(function(res){
+    $scope.champions = res;
+  })
 
   $scope.search = function(player){
     $('#playerTitle').show();
@@ -35,14 +38,67 @@ module.controller('LeaguesCtrl', function ($scope, $http, ChampionImageService, 
 
   $scope.print = function(){
     console.log($scope.gameData);
+    console.log($scope.champions);
   }
 
   $scope.chooseGame = function(game){
-    $scope.gameData = game;
+    var playerArray = [];
+    angular.forEach(game.team1, function(player){
+      playerArray.push(player.summonerId);
+    });
+    angular.forEach(game.team2, function(player){
+      playerArray.push(player.summonerId);
+    });
+    PlayerService.getPlayerNamesByIdArray(playerArray).then(function(res){
+      angular.forEach(game.team1, function(player){
+        angular.forEach(res, function(name, id){
+          if(player.summonerId == id){
+            player.name = name;
+          }
+        });
+      });
+      angular.forEach(game.team2, function(player){
+        angular.forEach(res, function(name, id){
+          if(player.summonerId == id){
+            player.name = name;
+          }
+        });
+      });
+      $scope.gameData = game;
+    });
   }
 });
 
-module.factory("GameService", function($http, $q, ChampionImageService){
+module.factory("ChampionService", function($http){
+  var champService = {
+    getAllChampions: function(){
+      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+        var result = [];
+        angular.forEach(riotResponse.data.data, function(value, key){
+          result.push(key);
+        });
+        result.sort();
+        return result;
+      });
+      return promise
+    },
+    getChampionNameForId: function(id){
+      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/'+id+'?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+        return riotResponse.data.name;
+      });
+      return promise
+    },
+    getImage: function(cId){
+      var promise = $http.get("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+cId+"?champData=image&api_key=466e64cb-39cc-4832-afc4-f4c1cc017533", { cache: true}).then(function(riotResponse) {
+          return riotResponse.data["image"].full;
+      });
+      return promise;
+    }
+  };
+  return champService;
+});
+
+module.factory("GameService", function($http, $q, ChampionService){
   var sumId;
   var data;
   var gameData;
@@ -67,15 +123,17 @@ module.factory("GameService", function($http, $q, ChampionImageService){
             gameObj["time"] = game.createDate;
             angular.forEach(gameObj, function(team){
               angular.forEach(team, function(player){
-                promises.push(ChampionImageService.getImage(player.championId).then(function(data) {
+                promises.push(ChampionService.getImage(player.championId).then(function(data) {
                   player["image"] = data;
+                }));
+                promises.push(ChampionService.getChampionNameForId(player.championId).then(function(data) {
+                  player["champion"] = data;
                 }));
               });
             });
             gameData.push(gameObj);
           });
           var promise = $q.all(promises).then(function(){
-            console.log(gameData);
             return gameData;
           });
           return promise
@@ -88,17 +146,20 @@ module.factory("GameService", function($http, $q, ChampionImageService){
   return gameService;
 });
 
-
-module.factory("ChampionImageService", function($http){
-  var champImgService = {
-    getImage: function(cId){
-      var promise = $http.get("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+cId+"?champData=image&api_key=466e64cb-39cc-4832-afc4-f4c1cc017533", { cache: true}).then(function(riotResponse) {
-          return riotResponse.data["image"].full;
+module.factory("PlayerService", function($http){
+  var playerService = {
+    getPlayerNamesByIdArray: function(array){
+      var idString = "";
+      array.forEach(function(id){
+        idString = idString + id+",";
       });
-      return promise;
+      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/'+idString+'/name?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+        return riotResponse.data;
+      });
+      return promise
     }
-  };
-  return champImgService;
+  }
+  return playerService;
 });
 
 module.directive('playerDataDir', function() {
@@ -107,7 +168,7 @@ module.directive('playerDataDir', function() {
         scope: false,
         template: function(elem, attr){
           return  '<tr>' +
-                  '<td ng-model="gameData.team'+attr.team+'.player'+attr.player+'.role">' +
+                  '<td style="width:10%;" ng-model="gameData.team'+attr.team+'.player'+attr.player+'.role">' +
                   '<ui-select theme="selectize" ng-disabled="disabled">'+
                   '<ui-select-match placeholder="Role">{{$select.selected.name}}</ui-select-match>' +
                   '<ui-select-choices repeat="role in roles">' +
@@ -115,11 +176,16 @@ module.directive('playerDataDir', function() {
                   '</ui-select-choices>' +
                   '</ui-select>' +
                   '</td>' +
-                  '<td>' +
-                  '<img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/champion/Alistar.png" style="width:50%;">' +
+                  '<td style="width:15%;" ng-model="gameData.team'+attr.team+'.player'+attr.player+'.champion">' +
+                  '<ui-select theme="selectize" ng-disabled="disabled">'+
+                  '<ui-select-match placeholder="Champion">{{$select.selected}}</ui-select-match>' +
+                  '<ui-select-choices repeat="champion in champions">' +
+                  '<span ng-bind-html="champion"></span>' +
+                  '</ui-select-choices>' +
+                  '</ui-select>' +
                   '</td>' +
                   '<td>' +
-                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.summonerId" type="text" class="form-control" aria-label="...">' +
+                  '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.name" type="text" class="form-control" aria-label="...">' +
                   '</td>' +
                   '<td>' +
                   '<input ng-model="gameData.team'+attr.team+'.player'+attr.player+'.kills" type="text" class="form-control" aria-label="...">' +
