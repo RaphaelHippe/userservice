@@ -1,4 +1,5 @@
 var module = angular.module('leagueModule', ['ui.select', 'ngSanitize']);
+var apiKey = "5801c4b7-bde8-4bfe-b071-89881d00a06c";
 
 module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionService, PlayerService, StatsService) {
   $('#spinner').hide();
@@ -90,7 +91,7 @@ function statsExtractor(player, item, team){
 module.factory("ChampionService", function($http){
   var champService = {
     getAllChampions: function(){
-      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key='+apiKey, { cache: true}).then(function(riotResponse){
         var result = [];
         angular.forEach(riotResponse.data.data, function(value){
           result.push(value.name);
@@ -101,13 +102,13 @@ module.factory("ChampionService", function($http){
       return promise
     },
     getChampionNameForId: function(id){
-      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/'+id+'?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/'+id+'?api_key='+apiKey, { cache: true}).then(function(riotResponse){
         return riotResponse.data.name;
       });
       return promise
     },
     getImage: function(cId){
-      var promise = $http.get("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+cId+"?champData=image&api_key=466e64cb-39cc-4832-afc4-f4c1cc017533", { cache: true}).then(function(riotResponse) {
+      var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+cId+"?champData=image&api_key='+apiKey, { cache: true}).then(function(riotResponse) {
           return riotResponse.data["image"].full;
       });
       return promise;grun
@@ -125,10 +126,10 @@ module.factory("GameService", function($http, $q, ChampionService){
     getGamesForPlayer: function(playerName){
       gameData = [];
       promises = [];
-      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/'+playerName+'?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse) {
+      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/'+playerName+'?api_key='+apiKey, { cache: true}).then(function(riotResponse) {
         sumId = riotResponse.data[playerName.toLowerCase().replace(/\s+/g, '')].id;
       }).then(function() {
-        var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/'+sumId+'/recent?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse) {
+        var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/'+sumId+'/recent?api_key='+apiKey, { cache: true}).then(function(riotResponse) {
           data = riotResponse.data.games;
           angular.forEach(data, function(game){
             var gameObj = {teams:{team1:{},team2:{}}};
@@ -173,7 +174,7 @@ module.factory("PlayerService", function($http){
       array.forEach(function(id){
         idString = idString + id+",";
       });
-      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/'+idString+'/name?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/'+idString+'/name?api_key='+apiKey, { cache: true}).then(function(riotResponse){
         return riotResponse.data;
       });
       return promise
@@ -185,7 +186,7 @@ module.factory("PlayerService", function($http){
 module.factory("StatsService", function($http){
   var statsService = {
     getPlayerStatsForGame: function(game){
-      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v2.2/match/'+game+'?includeTimeline=false&api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse){
+      var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v2.2/match/'+game+'?includeTimeline=false&api_key='+apiKey, { cache: true}).then(function(riotResponse){
         return riotResponse.data.participants;
       });
       return promise
