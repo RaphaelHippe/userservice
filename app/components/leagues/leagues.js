@@ -8,7 +8,7 @@ module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionS
   $scope.loading;
   $scope.gameData;
   $scope.player;
-  $scope.players = ["OberstK", "Mindmesser"];
+  $scope.players = ["OberstK", "Mindmesser", "TlC Youchra"];
   $scope.roles = ["Top", "Jungle", "Mid", "ADC", "Support"];
 
   ChampionService.getAllChampions().then(function(res){
@@ -110,7 +110,7 @@ module.factory("ChampionService", function($http){
       var promise = $http.get("https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion/"+cId+"?champData=image&api_key=466e64cb-39cc-4832-afc4-f4c1cc017533", { cache: true}).then(function(riotResponse) {
           return riotResponse.data["image"].full;
       });
-      return promise;
+      return promise;grun
     }
   };
   return champService;
@@ -126,7 +126,7 @@ module.factory("GameService", function($http, $q, ChampionService){
       gameData = [];
       promises = [];
       var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/'+playerName+'?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse) {
-        sumId = riotResponse.data[playerName.toLowerCase()].id;
+        sumId = riotResponse.data[playerName.toLowerCase().replace(/\s+/g, '')].id;
       }).then(function() {
         var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/'+sumId+'/recent?api_key=466e64cb-39cc-4832-afc4-f4c1cc017533', { cache: true}).then(function(riotResponse) {
           data = riotResponse.data.games;
