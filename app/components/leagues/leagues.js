@@ -211,7 +211,7 @@ module.directive('playerDataDir', function() {
                   '<td style="width:15%;" ng-model="gameData.teams.team'+attr.team+'.player'+attr.player+'.champion">' +
                   '<ui-select theme="selectize" ng-disabled="disabled">'+
                   '<ui-select-match placeholder="Champion">{{$select.selected}}</ui-select-match>' +
-                  '<ui-select-choices repeat="champion in champions">' +
+                  '<ui-select-choices repeat="champion in champions | filter: $select.search">' +
                   '<span ng-bind-html="champion"></span>' +
                   '</ui-select-choices>' +
                   '</ui-select>' +
