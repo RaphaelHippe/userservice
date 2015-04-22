@@ -1,25 +1,31 @@
-'use strict';
-
-/**
- * @ngdoc function
- * @name webappApp.controller:SliderCtrl
- * @description
- * # SliderCtrl
- * Controller of the webappApp
- */
-angular.module('sliderModule').
-  controller('SliderCtrl', function ($scope) {
-    $scope.images = [{
-      src: 'slide_one.png',
+angular.module('sliderModule').controller('SliderCtrl', function ($scope) {
+  $scope.myInterval = 5000;
+  var slides = $scope.slides = [{
+      image: "assets/images/slider/slide_one.png",
       link: 'about',
-      title: 'Pic 1'
-    }, {
-      src: 'slide_two.png',
+      text: "About"
+    },
+    {
+      image: "assets/images/slider/slide_two.png",
       link: 'leagues',
-      title: 'Pic 2'
-    }, {
-      src: 'slide_three.png',
+      text: "Leagues"
+    },
+    {
+      image: "assets/images/slider/slide_three.png",
       link: 'contact',
-      title: 'Pic 3'
-    }];
-  });
+      text: "Contact"
+    }
+  ];
+});
+
+//needed for the imcompatiblity with ngAnimate
+angular.module('sliderModule').directive('disableAnimation', function($animate){
+    return {
+        restrict: 'A',
+        link: function($scope, $element, $attrs){
+            $attrs.$observe('disableAnimation', function(value){
+                $animate.enabled(!value, $element);
+            });
+        }
+    }
+});

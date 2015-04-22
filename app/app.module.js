@@ -12,7 +12,7 @@ angular.module('homeModule', [])
 angular.module('leagueModule', [])
 
 // Shared
-angular.module('sliderModule', [])
+angular.module('sliderModule', ['ui.bootstrap'])
 
 // Base module
 angular.module('baseModule', [

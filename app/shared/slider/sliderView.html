@@ -1,5 +1,9 @@
-  <div class="slider">
-  	<div class="slide" ng-repeat="image in images" ng-show="image.visible">
-  		<a ng-href="#/{{image.link}}"><img height="300px" width="1018px" ng-src="../../assets/images/slider/{{image.src}}" /></a>
-  	</div>
+<div ng-controller="SliderCtrl">
+  <div style="height: 305px">
+    <carousel interval="myInterval" disable-animation="true">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <a ng-href="#/{{slide.link}}"><img ng-src="{{slide.image}}" style="margin:auto;"></a>
+      </slide>
+    </carousel>
   </div>
+</div>
