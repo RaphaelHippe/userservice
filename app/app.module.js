@@ -17,7 +17,6 @@ angular.module('sliderModule', ['ui.bootstrap'])
 
 // Base module
 angular.module('baseModule', [
-    'ngAnimate',
     'ngCookies',
     'ngRoute',
     'ngSanitize',
