@@ -1,4 +1,4 @@
-<div ng-controller="SliderCtrl">
+<div ng-controller="SliderCtrl" carousel-controller-provider>
   <div style="height: 305px">
     <carousel interval="myInterval" disable-animation="true">
       <slide ng-repeat="slide in slides" active="slide.active">

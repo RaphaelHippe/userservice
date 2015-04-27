@@ -4,9 +4,6 @@ var apiKey = "5801c4b7-bde8-4bfe-b071-89881d00a06c";
 module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionService, PlayerService, StatsService) {
   $('#spinner').hide();
   $('#playerTitle').hide();
-  var sumId;
-  var data;
-  $scope.loading;
   $scope.gameData;
   $scope.player;
   $scope.players = ["OberstK", "Mindmesser", "TlC Youchra"];
@@ -22,7 +19,6 @@ module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionS
     $('#spinner').show();
     GameService.getGamesForPlayer(player).then(function(data){
       $scope.data = data;
-      $scope.loading = false;
       $('#spinner').hide();
     });
   }

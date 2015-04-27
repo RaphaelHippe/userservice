@@ -10,6 +10,7 @@
 // Components
 angular.module('homeModule', [])
 angular.module('leagueModule', [])
+angular.module('headerModule', [])
 
 // Shared
 angular.module('sliderModule', ['ui.bootstrap'])
@@ -23,5 +24,6 @@ angular.module('baseModule', [
     'ngTouch',
     'homeModule',
     'sliderModule',
-    'leagueModule'
+    'leagueModule',
+    'headerModule'
   ])
