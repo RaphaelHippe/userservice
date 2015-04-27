@@ -1,10 +1,10 @@
 <div id="background"> </div>
-  <header>
+  <header ng-controller="HeaderCtrl">
     <div id="navBar">
       <div class="clear"></div>
       <div id="leftNav">
         <ul id="serverNav">
-          <li>NA</li>
+          <li ng-click="testButton()">NA</li>
           <li>&nbsp;|&nbsp;</li>
           <li>EU</li>
         </ul>
@@ -21,8 +21,8 @@
       <div id="rightNav">
         <div>
           <ul id="userNav">
-            <li class="loginBtn">LOGIN</li>
-            <li class="joinBtn">JOIN</li>
+            <li ng-click="showLogin()" class="pointer loginBtn">LOGIN</li>
+            <li ng-click="showJoin()" class="pointer joinBtn">JOIN</li>
           </ul>
         <!--
           <ul id="userNavCheers">

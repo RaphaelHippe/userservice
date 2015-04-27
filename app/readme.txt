@@ -52,16 +52,23 @@ index.html
 
 
 This structure above is obviously just an example but I hope everybody gets where
- we are 
-heading with this. 
+ we are
+heading with this.
 
-The main reason we use this structure instead of the old one is to keep 
-the overview. 
+The main reason we use this structure instead of the old one is to keep
+the overview.
 Because controllers and view files were stacking up and it slowed the development
 down.
 
 
 
 ATTENTION: I believe we can't use yeoman to create new controllers /directives /
-services anymore. 
+services anymore.
 So be sure you include the file in the index.html!
+
+
+ApplicationCtrl:
+
+I implemented a goTo(input) function. This is available in the whole application.
+So if you want to navigate somewhere just call $scope.goTo(input). Example:
+$scope.goTo('leagues');  

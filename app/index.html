@@ -22,11 +22,13 @@
 
     <!-- Add your site or application content here -->
     <!-- <div class="container"> -->
+      <div ng-controller="ApplicationCtrl">
         <div ng-include="'components/header/header.html'"></div>
         <div id="wrapper">
           <div ng-view="" autoscroll="true"></div>
         </div>
         <div ng-include="'components/footer/footer.html'"></div>
+      </div>
     <!-- </div> -->
 
 
@@ -58,15 +60,29 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="app.module.js"></script>
         <script src="app.routes.js"></script>
+        <script src="shared/application.js"></script>
         <script src="components/home/home.js"></script>
+        <script src="components/header/login.js"></script>
+        <script src="components/header/header.js"></script>
+        <script src="components/header/join.js"></script>
+        <script src="components/profile/profile.js"></script>
+        <script src="components/account/account.js"></script>
+        <script src="components/account/settings.js"></script>
+        <script src="components/freeagentdatabase/freeAgentDatabaseController.js"></script>
+        <script src="components/freeagentdatabase/freeAgentDatabaseService.js"></script>
         <script src="shared/slider/sliderCtrl.js"></script>
         <script src="shared/slider/sliderDirective.js"></script>
+        <script src="shared/userservice/session.js"></script>
+        <script src="shared/userservice/userservice.js"></script>
+        <script src="shared/userservice/resource.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -29,38 +29,52 @@ angular.module('baseModule')
         controller: 'HomeCtrl' //contactCtrl
       })
     /* PP and TAC*/
-      .when('/privacyPolicy',{
+      .when('/privacy-policy',{
         templateUrl: 'components/privacyPolicy/privacyPolicy.html',
         controller: 'HomeCtrl' //privacyPolicyCtrl
       })
-      .when('/termsAndConditions', {
+      .when('/terms-and-conditions', {
         templateUrl: 'components/termsAndConditions/termsAndConditions.html',
         controller: 'HomeCtrl' //termsAndConditionsCtrl
       })
     /* LEAGUES ROUTES*/
-    .when('/leaguesSilverPremier', {
+    .when('/leagues-silver-premier', {
         templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //silverPremierCtrl
     })
-    .when('/leaguesPlatinumPremier', {
+    .when('/leagues-platinum-premier', {
         templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //platinumPremierCtrl
     })
-    .when('/leaguesDiamondPremier', {
+    .when('/leagues-diamond-premier', {
         templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //diamondPremierCtrl
     })
-    .when('/leaguesSilverOpen', {
+    .when('/leagues-silver-open', {
         templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //silverOpenCtrl
     })
-    .when('/leaguesPlatinumOpen', {
+    .when('/leagues-platinum-open', {
         templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //platinumOpenCtrl
     })
-    .when('/leaguesDiamondOpen', {
+    .when('/leagues-diamond-open', {
         templateUrl: 'components/leagues/leaguesDetails.html',
         controller: 'HomeCtrl' //diamondOpenCtrl
+    })
+    /* PROFILE AND ACCOUNT */
+    .when('/profile', {
+        templateUrl: 'components/profile/profile.html',
+        controller: 'ProfileCtrl'
+    })
+    .when('/account', {
+        templateUrl: 'components/account/account.html',
+        controller: 'AccountCtrl'
+    })
+    /* FreeAgentDatabase*/
+    .when('/free-agent-database', {
+        templateUrl: 'components/freeagentdatabase/freeAgentDatabaseView.html',
+        controller: 'freeAgentDatabaseCtrl'
     })
       .otherwise({
         redirectTo: '/'
