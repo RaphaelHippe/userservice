@@ -15,7 +15,6 @@ angular.module('sliderModule', [])
 
 // Base module
 angular.module('baseModule', [
-    'ngAnimate',
     'ngCookies',
     'ngRoute',
     'ngSanitize',
