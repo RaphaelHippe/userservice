@@ -313,7 +313,7 @@ module.exports = function (grunt) {
       			'components/**/*',
       			'shared/**/*',
       			'assets/**/*',
-            'images/{,*/}*.{webp}',
+            'images/{,*/}*.{webp}', //why this one? This folder doesn't exist?
             'fonts/*'
           ]
         }, {
