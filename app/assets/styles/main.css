@@ -146,6 +146,7 @@ a {
 	background-color: #f0eded;
 	margin: 0px auto;
   margin-top: -20px;
+	padding-bottom: 20px;
 	width: 1024px;
 	/* width: 1200px; */
 	border: #808080 3px solid;
@@ -446,19 +447,20 @@ footer{
 #leagueBadgesContainer{
 	text-align: center;
 }
+
+/*where is the difference between premierbadges and premierBadgeImg?*/
 .premierBadges{
 	list-style-type: none;
 	margin: 0px auto;
-	margin-bottom: 450px;
-	width: 900px;
+	margin-bottom: 40px;
+	width: 90%;
 }
 
 .openBadges{
 	list-style-type: none;
 	margin: 0px auto;
-	width: 837px;
-	margin-top: 50px;
-	margin-bottom: 330px;
+	width: 83%;
+	margin-top: 40px;
 }
 
 .premierBadges li, .openBadges li{
@@ -525,4 +527,30 @@ footer{
 @media screen and (min-width: 768px) {
 
 
+}
+
+.gameinput{
+	padding: 0px 20px
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
 }

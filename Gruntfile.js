@@ -310,9 +310,10 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'components/{,*/}*.html',
-            'shared/{,*/}*.html',
-            'assets/images/{,*/}*.{webp}',
+      			'components/**/*',
+      			'shared/**/*',
+      			'assets/**/*',
+            'images/{,*/}*.{webp}',
             'fonts/*'
           ]
         }, {

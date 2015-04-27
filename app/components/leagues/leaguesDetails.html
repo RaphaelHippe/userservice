@@ -1,10 +1,11 @@
-<div class="displaySilverLeague">
+<div>
   <h1>This is the hub for the Compete League NA Bronze and Silver League</h1>
   <div class="textCentered"><img class="premierBadgeImg" src="../../assets/images/league/silver_premier_badge.png" /></div>
 
-  <br>
-  <br>
-  <table class="table rankingTable left">
+  <br/>
+  <br/>
+  <div class="left">
+  <table class="table rankingTable">
     <tr>
       <th colspan="4">Season Rankings</th>
     </tr>
@@ -75,7 +76,9 @@
       <td>100%</td>
     </tr>
   </table>
-  <table class="table scheduleTable right">
+  </div>
+  <div class="right">
+  <table class="table scheduleTable">
     <tr>
       <th colspan="5">Schedule</th>
     </tr>
@@ -157,7 +160,10 @@
       <td>yes</td>
     </tr>
   </table>
-  <a class="right" href="">See full schedule...</a>
+  </div>
+  <p>
+    <a class="right" href="">See full schedule...</a>
+  </p>
   <div class="clear spacer"></div>
   <h2>Leagues Dream Team</h2>
   <div class="leaguesDreamTeam">
@@ -205,23 +211,21 @@
   </div>
   <div class="clear spacer"></div>
   <div class="left">
-
-      <a href="?do=Rulebook"><input class="button" type="submit" value="Ruleset"></a><br>
-      The complete ruleset for <br>
-      the CompeteLeague Open <br>
+      <a href="?do=Rulebook"><input class="button" type="submit" value="Ruleset"></a><br/>
+      The complete ruleset for <br/>
+      the CompeteLeague Open <br/>
       and Premier Leagues
-
   </div>
   <div class="right">
     <div class="textCentered">
-      <input class="button joinBtn" type="submit" value="Register"><br>
+      <input class="button joinBtn" type="submit" value="Register"><br/>
       Want to join our leagues?<br>
-      Register today and be playing by X date<br>
+      Register today and be playing by X date<br/>
     </div>
   </div>
   <div class="clear spacer"></div>
-  <h2>View our Leagues</h2>
   <div>
+    <h2>View our Leagues</h2>
     <ul class="premierBadges">
       <li><a ng-href="#/leaguesSilverPremier" href=""><img class="premierBadgeImg" src="../../assets/images/league/silver_premier_badge.png" /></a></li>
   		<li><a ng-href="#/leaguesPlatinumPremier"  href=""><img class="premierBadgeImg" src="../../assets/images/league/platinum_premier_badge.png" /></a></li>
@@ -235,5 +239,7 @@
   		<li><a ng-href="#/leaguesPlatinumOpen" href=""><img class="openBadgeImg" src="../../assets/images/league/platinum_open_badge.png" /></a></li>
   		<li><a ng-href="#/leaguesDiamondOpen" href=""><img class="openBadgeImg" src="../../assets/images/league/diamond_open_badge.png" /></a></li>
     </ul>
+    <div class="clear"></div>
   </div>
+  <div class="clear"></div>
 </div>
