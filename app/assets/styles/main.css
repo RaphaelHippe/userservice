@@ -46,6 +46,10 @@ a {
 	height: 300px;
 }
 
+.pointer {
+	cursor: pointer;
+}
+
 .textContent{
 	text-align: left;
 	line-height: 150%;
@@ -124,6 +128,44 @@ a {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
 }
 
+.btn-cl {
+	color: snow;
+	background-color: #3e3e3e;
+	background: #515151; /* Old browsers */
+	background: -moz-linear-gradient(left,  #515151 0%, #191919 50%, #515151 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515151), color-stop(50%,#191919), color-stop(100%,#515151)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #515151 0%,#191919 50%,#515151 100%); /* IE10+ */
+	background: linear-gradient(to right,  #515151 0%,#191919 50%,#515151 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
+}
+
+.btn-cl:hover{
+	background-color: #6b6b6b;
+	background: #515151; /* Old browsers */
+	background: -moz-linear-gradient(left,  #515151 0%, #6b6b6b 50%, #515151 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#515151), color-stop(50%,#6b6b6b), color-stop(100%,#515151)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #515151 0%,#6b6b6b 50%,#515151 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #515151 0%,#6b6b6b 50%,#515151 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #515151 0%,#6b6b6b 50%,#515151 100%); /* IE10+ */
+	background: linear-gradient(to right,  #515151 0%,#6b6b6b 50%,#515151 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#515151', endColorstr='#515151',GradientType=1 ); /* IE6-9 */
+}
+
+
+/*
+
+	START: Modal / Popup
+*/
+
+.modal-dialog {
+	-webkit-box-shadow: 8px 6px 18px 2px rgba(168, 2, 0, 0.60), -8px -6px 18px 2px rgba(168, 2, 0, 0.75);
+-moz-box-shadow:    8px 6px 18px 2px rgba(168, 2, 0, 0.60), -6px -8px 18px 2px rgba(71, 126, 188, 0.75);
+box-shadow:         8px 6px 18px 2px rgba(168, 2, 0, 0.60), -6px -8px 18px 2px rgba(71, 126, 188, 0.75);
+width: 800px;
+}
+
 
 /*
   END: General Stuff
@@ -146,7 +188,6 @@ a {
 	background-color: #f0eded;
 	margin: 0px auto;
   margin-top: -20px;
-	padding-bottom: 20px;
 	width: 1024px;
 	/* width: 1200px; */
 	border: #808080 3px solid;
@@ -447,20 +488,19 @@ footer{
 #leagueBadgesContainer{
 	text-align: center;
 }
-
-/*where is the difference between premierbadges and premierBadgeImg?*/
 .premierBadges{
 	list-style-type: none;
 	margin: 0px auto;
-	margin-bottom: 40px;
-	width: 90%;
+	margin-bottom: 450px;
+	width: 900px;
 }
 
 .openBadges{
 	list-style-type: none;
 	margin: 0px auto;
-	width: 83%;
-	margin-top: 40px;
+	width: 837px;
+	margin-top: 50px;
+	margin-bottom: 330px;
 }
 
 .premierBadges li, .openBadges li{
@@ -517,6 +557,372 @@ footer{
 	z-index: 200;
 }
 
+/* START: ACCOUNT / PROFILE */
+
+.accountPlayerStats{
+	background-image: url("../images/playerCards/midTemplate.png");
+	width: 293px;
+	height: 459px;
+	margin-right: 40px;
+}
+
+.accountStaffCard{
+	width: 293px;
+	height: 459px;
+	background-color: orange;
+}
+
+/* PLAYER NAME*/
+
+.accountPlayerName{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-top: 0px;
+	padding-top: 15px;
+}
+
+/* PLAYER TEAM ICON */
+
+.accountPlayerTeamIcon{
+	height: 60px;
+	width: 60px;
+	background-image: url("../images/teamIcons/defaultTeamIcon.png");
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	margin-left: 218px;
+	margin-top: -25px;
+}
+
+/* PLAYER ICON */
+
+.accountPlayerIcon{
+	height: 175px;
+	width: 215px;
+	background-image: url("../images/userIcons/defaultUserIcon.png");
+	background-repeat: no-repeat;
+	background-size: 215px 215px;
+	margin-left: 41px;
+	margin-top: 30px;
+}
+
+/* PLAYER STATS */
+.accountPlayerKDA{
+	color: snow;
+	font-size: 18px;
+	margin-top: 45px;
+	margin-left: 220px;
+}
+
+.accountPlayerGPM{
+	color: snow;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-left: 225px;
+}
+
+.accountPlayerCSPM{
+	color: snow;
+	font-size: 18px;
+	margin-top: 15px;
+	margin-left: 230px;
+}
+
+/* TEAM STATS */
+
+.teamStats {
+	background-image: url("../images/playerCards/teamStats2.png");
+	background-size: 542px 224px;
+	height: 224px;
+	width: 542px;
+	margin-left: 40px;
+}
+
+.teamName{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 225px;
+	margin-top: 0px;
+	padding-top: 10px;
+}
+
+.teamIcon{
+	height: 150px;
+	width: 150px;
+	background-image: url("../images/teamIcons/defaultTeamIcon.png");
+	background-repeat: no-repeat;
+	background-size: 150px 150px;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+.teamClLeague{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 330px;
+	margin-top: -150px;
+}
+
+.teamClRank{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 500px;
+	margin-top: 10px;
+}
+
+.teamGamesPlayed{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 490px;
+	margin-top: 5px;
+}
+
+.teamWLRecord{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 480px;
+	margin-top: 5px;
+}
+
+.teamTotalKD{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 470px;
+	margin-top: 5px;
+}
+
+.teamMVP{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 445px;
+	margin-top: 5px;
+}
+
+/* TEAM ROSTER */
+
+.teamRoster {
+	background-image: url("../images/playerCards/teamRoster2.png");
+	background-size: 542px 224px;
+	height: 224px;
+	width: 542px;
+	margin-top: 10px;
+	margin-left: 40px;
+}
+
+.teamTopLaner{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 430px;
+	margin-top: 0px;
+	padding-top: 45px;
+}
+
+.teamJungle{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 430px;
+	margin-top: 5px;
+}
+
+.teamMidLaner{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 430px;
+	margin-top: 6px;
+}
+
+.teamMarksman{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 430px;
+	margin-top: 6px;
+}
+
+.teamSupport{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 430px;
+	margin-top: 6px;
+}
+
+.teamSubstituteOne{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 430px;
+	margin-top: 5px;
+}
+
+.teamSubstituteTwo{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 350px;
+	margin-top: -22px;
+}
+
+.teamSubstituteThree{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 270px;
+	margin-top: -22px;
+}
+
+.teamSubstituteFour{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 190px;
+	margin-top: -22px;
+}
+
+/* Schedule Table scroll */
+.yourScheduleTableScroll{
+	height:400px;
+	overflow:auto;
+	margin-top:20px;
+}
+
+.yourScheduleTableScroll::-webkit-scrollbar {
+    width: 1em;
+}
+
+.yourScheduleTableScroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.0);
+}
+
+.yourScheduleTableScroll::-webkit-scrollbar-thumb {
+  background-color: #3e3e3e;
+  border-radius: 15px;
+  outline: 0px solid slategrey;
+}
+
+/*
+	END: yourSchedule
+	START: leaguesDreamTeam
+*/
+
+.leaguesDreamTeam{
+
+}
+
+.midDreamTeam{
+	background-image: url("../images/playerCards/midTemplate.png");
+	width: 293px;
+	height: 459px;
+	float: left;
+	margin-left: 161.5px;
+}
+
+.adcDreamTeam{
+	background-image: url("../images/playerCards/adcTemplate.png");
+	width: 293px;
+	height: 459px;
+	float: left;
+	margin-left: 15px;
+}
+
+.topDreamTeam{
+	background-image: url("../images/playerCards/topTemplate.png");
+	width: 293px;
+	height: 459px;
+	float: left;
+
+}
+
+.jungleDreamTeam{
+	background-image: url("../images/playerCards/jungleTemplate.png");
+	width: 293px;
+	height: 459px;
+	float: left;
+	margin-left: 15px;
+}
+
+.supportDreamTeam{
+	background-image: url("../images/playerCards/supportTemplate.png");
+	width: 293px;
+	height: 459px;
+	float: left;
+	margin-left: 15px;
+}
+
+/* PLAYER NAME*/
+
+.dreamTeamPlayerName{
+	color: snow;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 25px;
+	margin-top: 0px;
+	padding-top: 15px;
+}
+
+/* PLAYER TEAM ICON */
+
+.dreamTeamTeamIcon{
+	height: 60px;
+	width: 60px;
+	background-image: url("../images/teamIcons/defaultTeamIcon.png");
+	background-repeat: no-repeat;
+	background-size: 60px 60px;
+	margin-left: 218px;
+	margin-top: -25px;
+}
+
+/* PLAYER ICON */
+
+.dreamTeamPlayerIcon{
+	height: 175px;
+	width: 215px;
+	background-image: url("../images/userIcons/defaultUserIcon.png");
+	background-repeat: no-repeat;
+	background-size: 215px 215px;
+	margin-left: 41px;
+	margin-top: 30px;
+}
+
+/* PLAYER STATS */
+.DreamTeamKDA{
+	color: snow;
+	font-size: 18px;
+	margin-top: 45px;
+	margin-left: 220px;
+}
+
+.DreamTeamGPM{
+	color: snow;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-left: 225px;
+}
+
+.DreamTeamCSPM{
+	color: snow;
+	font-size: 18px;
+	margin-top: 15px;
+	margin-left: 230px;
+}
+
+
+/*
+	END: leaguesDreamTeam
+	START:
+*/
+
 /* Customize container */
 @media (min-width: 768px) {
 
@@ -527,30 +933,4 @@ footer{
 @media screen and (min-width: 768px) {
 
 
-}
-
-.gameinput{
-	padding: 0px 20px
-}
-
-.glyphicon-refresh-animate {
-    -animation: spin .7s infinite linear;
-    -ms-animation: spin .7s infinite linear;
-    -webkit-animation: spinw .7s infinite linear;
-    -moz-animation: spinm .7s infinite linear;
-}
-
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
-
-@-webkit-keyframes spinw {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
-}
-
-@-moz-keyframes spinm {
-    from { -moz-transform: rotate(0deg);}
-    to { -moz-transform: rotate(360deg);}
 }

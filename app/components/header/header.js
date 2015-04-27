@@ -1,29 +1,40 @@
-var module = angular.module('headerModule', []);
+angular.module('headerModule')
+  .controller('HeaderCtrl', function ($scope, ModalService) {
 
-module.controller('HeaderCtrl', function ($scope, TwitchService) {
-  $scope.twitchStatus;
 
-  TwitchService.getStatusOfCLTwitchStream().then(function(online){
-    if(online){
-      $scope.twitchStatus = "twitchNavLive";
-    }else{
-      $scope.twitchStatus = "twitchNavOff";
-    }
-  });
-});
+    $scope.showLogin = function () {
 
-module.factory("TwitchService", function($http){
-  var twitchService = {
-    getStatusOfCLTwitchStream: function(game){
-      var promise = $http.jsonp('https://api.twitch.tv/kraken/streams/competeleague?callback=JSON_CALLBACK', { cache: true }).then(function(riotResponse){
-        if(riotResponse.data.stream != null){
-          return true;
-        }else{
-          return false;
-        }
+      ModalService.showModal({
+        templateUrl: "components/header/login.html",
+        controller: "LoginCtrl"
+      }).then(function(modal) {
+
+        //it's a bootstrap element, use 'modal' to show it
+        modal.element.modal();
+        modal.close.then(function(result) {
+          console.log(result);
+        });
       });
-      return promise
-    }
-  }
-  return twitchService;
-});
+
+    };
+
+    $scope.showJoin = function () {
+
+      ModalService.showModal({
+        templateUrl: "components/header/join.html",
+        controller: "JoinCtrl"
+      }).then(function(modal) {
+
+        //it's a bootstrap element, use 'modal' to show it
+        modal.element.modal();
+        modal.close.then(function(result) {
+          console.log(result);
+        });
+      });
+
+    };
+
+
+
+
+  });

@@ -1,0 +1,179 @@
+<div ng-if="!currentUser">
+  <div class="textContent">
+		<h2>Please login to see this part of the website</h2>
+		<div class="textCentered">
+      <button class="btn btn-cl">Login</button>
+		</div>
+  </div>
+</div>
+<div ng-if="currentUser">
+  <div class="textContent">
+    <!-- Account Header -->
+    <h1>Welcome back {{currentUser.display}}</h1>
+  	<div class="pull-left">
+  	   <img src="../../assets/images/userIcons/defaultUserIcon.png" />
+  	   <!-- <div class="clear spacer"></div> -->
+  		 <img ng-if="currentUser.team_id != 0" src="../../assets/images/teamIcons/defaultTeamIcon.png" />
+  </div>
+  <div class="pull-right">
+  	<img ng-if="currentUser.admin_group=none" src="../../assets/images/staffIcons/defaultStaffIcon.png" />
+    <div class="clear spacer"></div>
+  	<button ng-click="showAccSettings()" class="btn btn-cl">Settings</button>
+  </div>
+  <div class="clear spacer"></div>
+    <div ng-switch="currentUser.member_group">
+      <div ng-switch-when="base">
+        <!-- Base User -->
+        <!--upgradeAccount-->
+        <h2>Information and Registering as a Player</h2>
+        You currently are a standard user for CompeteLeague! If you're new to the site and want to learn more you can check out our ABOUT US page for information! We run League of Legends leagues in an LCS format for players at all levels. If you'd like to sign up  as a player and start competing then you can register by hitting the button below and filling out a form.<br>
+        <button class="btn btn-cl pull-left">Sign Up</button>
+        <div class="clear spacer"></div>
+        <div ng-include="'components/account/accountJobApplication.html'"></div>
+      </div>
+      <div ng-switch-when="freeAgent">
+        <!-- free Agent -->
+        <!--upgradeAccount-->
+        <h2>Information and being a Free Agent</h2>
+        You're currently a Free Agent! You're listed on our free agent database under the summoner name X. You can view the free agent database to find other free agents and form a team! To view other free agents go to the database via the button below, filter for a player via rank and click their Display Name to see their Profile page. From here you can see their details, and if you want to form a team with them you can get in touch by leaving a comment below their profile or email them via the "message" button. You can edit your own Player Profile by following the "My Player Profile Page" link above.<br>
+        <button class="btn btn-cl pull-left">Free Agent Database</button>
+        <div class="clear spacer"></div>
+        <div ng-include="'components/account/accountJobApplication.html'"></div>
+				<h2>Create a Team</h2> <!--upgradeAccount-->
+				When you've formed a roster and you as Captain/your teams Captain is ready to register the team, click the "Create Team" button below! The Captain should fill out the form, electing a Vice-Captain, providing team details and a logo, and listing a roster of names. Once the form has been submitted each other roster member must accept the team request via the "Manage Team Invites" button. Once all 5 starting members have accepted the team will be formed, and your first game day will be between 7 and 14 days from then.<br>
+          <button class="btn btn-cl pull-left">Create A Team</button>
+				<div class="clear spacer"></div>
+				<h2>Unregistering as a Free Agent</h2>
+				If you wish to unregister as a Free Agent you can do so by clicking the button below and following the steps to confirm. This will remove you from the free agents database. You can re-register at a later date if you so desire.<br>
+          <button class="btn btn-lg btn-cl">Unregister</button>
+				<div class="clear spacer"></div>
+      </div>
+      <div ng-switch-when="player">
+        <!-- player / substitute -->
+        <h2>Your Schedule</h2>
+        This is your schedule - All your upcoming matches, stream times, and team practices will be displayed here!
+        <div ng-include="'components/account/accountYourSchedule.html'"></div>
+        <div class="pull-left" ng-include="'components/account/accountPlayerTeamStats.html'"></div>
+        <div class="pull-left" ng-include="'components/account/accountLeagueRankings.html'"></div>
+
+        <div class="pull-right">
+          <h2>Free Agent Database</h2>
+          The free agent database is a good place to find substitutes or new players if you are in need!<br>
+          <button class="btn btn-cl pull-left">Free Agent Database</button>
+          <div class="spacer"></div>
+        <div ng-include="'components/account/accountRuleset.html'"></div>
+        </div>
+        <div class="clear spacer"></div>
+        <div ng-include="'components/account/accountJobApplication.html'"></div>
+				<div class="pull-left">
+					<h2>Leaving your Team/Unregistering as a Player</h2>
+					If you wish to leave your team, your team Captain and Vice-Captain must swap you to a substitute role, where will be able to leave via the "Leave Team" button and instructions below. When you leave a team your stats will be retained and you will automatically be placed in the free agents database.  This must be done before you can unregister as a player.<br>
+          <button class="btn btn-lg btn-cl">Leave Team</button>
+				</div>
+				<div class="pull-right">
+					<h2>Your League Organizers</h2>
+					<div class="accountStaffCard"></div>
+				</div>
+				<div class="clear spacer"></div>
+      </div>
+      <div ng-switch-when="captain">
+        <!-- captain / viceCaptain -->
+        <h2>Your Schedule</h2>
+        This is your schedule - All your upcoming matches and stream times will be displayed here! As a Captain/Vice-Captain you have the ability to create events on this calendar that only your team will see - Use this to schedule practices!
+        <div ng-include="'components/account/accountYourSchedule.html'"></div>
+        When it is time for your game, please be ready 10 minutes prior and get to the lobby! As Captain/Vice-Captain you are responsible for fielding a roster, so make sure all your players can make it or arrange substitutes!
+				<div class="clear spacer"></div>
+				<h2>Request Reschedule</h2>
+				You can only request reschedules 48 hours in advance, and must provide reason.<br><br>
+				To request a reschedule click the button below and fill out the form. Detailed regulations regarding reschedules can be found in the Ruleset.<br>
+				<button class="btn btn-cl">Request Reschedule</button>
+				<div class="clear spacer"></div>
+        <h2>Roster Management</h2>
+
+				<table class="table table-striped">
+					<tr>
+						<th colspan="6">Roster</th>
+					</tr>
+					<tr>
+						<td><b>Name</b></td>
+						<td><b>LeagueAccount</b></td>
+						<td><b>Position</b></td>
+						<td><b>Edit</b></td>
+						<td><b>Promote</b></td>
+						<td><b>Kick</b></td>
+					</tr>
+					<tr ng-repeat="player in currentTeam">
+						<td ng-bind="player.display">Youchra</td>
+						<td ng-bind="player.sumName">TlC Youchra</td>
+						<td ng-bind="player.position">TopLane</td>
+						<td>
+              <button class="btn btn-sm btn-warning glyphicon glyphicon-edit"></button>
+            </td>
+						<td>
+              <button ng-hide="currentUser.display===player.display" class="btn btn-sm btn-success glyphicon glyphicon-king"></button>
+              <button ng-show="currentUser.display===player.display" class="btn btn-sm btn-success glyphicon glyphicon-king" disabled="disabled"></button>
+            </td>
+						<td>
+              <button ng-hide="currentUser.display===player.display" class="btn btn-sm btn-danger glyphicon glyphicon-remove-sign"></button>
+              <button ng-show="currentUser.display===player.display" class="btn btn-sm btn-danger glyphicon glyphicon-remove-sign" disabled="disabled"></button>
+            </td>
+					</tr>
+				</table>
+				<br><br>To edit a player to a different role, use the edit button to move them and confirm. To promote a player to replace your current role as Captain/Vice-Captain use the promote button and confirm. To remove a player they must be in a substitute role and both you and your Vice-Captain must confirm the removal.<br>
+				<div class="clear spacer"></div>
+        <h2>Unbiased 3rd Party Appeal</h2>
+				Our staff are all volunteers who love the idea of what CompeteLeague provides. As such we don't want to deprive them of the experiece: we let staff who aren't a part of the operation of your league participate. The button below is specifically for the purpose of disputing a ruling where a member of staff was on one side or another and you feel this lead to an unjust decision. Click the button then describe the ruling and your reasoning - and CompeteLeague admins will arrange for an unbiased third party to judge the case and give a ruling. Please use appeals wisely: in allowing our staff to compete we often hold them to the rules even more closely than non-staff competitors, so make sure to check the rules and consider both sides of the ruling. <br><br>
+				<button class="btn btn-cl">3rd Party Appeal</button>
+				<div class="clear spacer"></div>
+        <div class="pull-left" ng-include="'components/account/accountPlayerTeamStats.html'"></div>
+        <div class="pull-left" ng-include="'components/account/accountLeagueRankings.html'"></div>
+
+        <div class="pull-right">
+          <h2>Free Agent Database</h2>
+          The free agent database is a good place to find substitutes or new players if you are in need!<br>
+          <button class="btn btn-cl pull-left">Free Agent Database</button>
+          <div class="spacer"></div>
+        <div ng-include="'components/account/accountRuleset.html'"></div>
+        </div>
+        <div class="clear spacer"></div>
+        <div ng-include="'components/account/accountJobApplication.html'"></div>
+				<div class="pull-left">
+					<h2>Leaving your Team/Unregistering as a Player</h2>
+					If you wish to leave your team, your team Captain and Vice-Captain must swap you to a substitute role, where will be able to leave via the "Leave Team" button and instructions below. When you leave a team your stats will be retained and you will automatically be placed in the free agents database.  This must be done before you can unregister as a player.<br>
+          <button class="btn btn-lg btn-cl">Leave Team</button>
+				</div>
+				<div class="pull-right">
+					<h2>Your League Organizers</h2>
+					<div class="accountStaffCard"></div>
+				</div>
+				<div class="clear spacer"></div>
+      </div>
+      <div ng-switch-default>
+        <!-- default -->
+        <h2>default</h2>
+      </div>
+    </div>
+    <h2>CompeteLeague Services</h2> <!--CompeteLeagueSocialMedia-->
+				<div class="pull-left">
+					<div class="spacer"></div>
+					<h3>E-Mail services:</h3>
+					<form>
+						<label>Email me when the stream goes live</label>
+						<input type="checkbox" /><p>YES</p><br>
+						<label>Email me when CompeteLeague releases an article or content</label>
+						<input type="checkbox" /><p>YES</p><br>
+					</form>
+				</div>
+				<div class="pull-right">
+					<div class="spacer"></div>
+					<h3>Check out our social media pages:</h3><br>
+						<a href="https://www.facebook.com/Competeleague" target="_blank"><img src="../../assets/images/socialMedia/facebook_icon.png" /></a>
+						<a href="https://twitter.com/CompeteLeague" target="_blank"><img src="../../assets/images/socialMedia/twitter_icon.png" /></a>
+						<a href="http://www.youtube.com/competeleague" target="_blank"><img src="../../assets/images/socialMedia/youtube_icon.png" /></a>
+						<a href="http://www.reddit.com/r/competeleague" target="_blank"><img src="../../assets/images/socialMedia/reddit_icon.png" /></a>
+				</div>
+				<div class="clear spacer"></div>
+
+
+  </div>
+</div>

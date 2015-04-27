@@ -1,0 +1,63 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content popup">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Account Settings</h4>
+      </div>
+      <div class="modal-body">
+        <h2>Account Settings</h2> <!--changeAccountSettings-->
+      	<form>
+          <div class="form-group">
+        		<label>Registered Email Address:</label>
+            <input class="form-control" type="text" ng-model="currentUser.email" disabled />
+          </div>
+          <div class="form-group">
+        		<label>Display Name:</label>
+            <input class="form-control" type="text"  placeholder="{{currentUser.display}}" disabled />
+          </div>
+          <div class="form-group">
+            <label>Registered LoL Summonername:</label>
+            <input class="form-control" type="text"  placeholder="{{currentUser.sumName}}" disabled />
+          </div>
+        </form>
+          <hr>
+      		<h2>Changing Password</h2>
+        <form>
+      		<div id="changePassword">
+            <div class="form-group">
+        			<label>Current Password:</label>
+              <input class="form-control" id="" type="password" />
+            </div>
+            <div class="form-group">
+        			<label>New Password:</label>
+              <input class="form-control" id="newPassword" type="password" />
+            </div>
+            <div class="form-group">
+        			<label>Confirm Password:</label>
+              <input class="form-control" id="confirmPassword"  type="password" />
+            </div>
+      		</div>
+          <div class="form-group">
+        		<label>Change Password:</label>
+        		<input id="changePassword" type="checkbox" /><p>YES</p><br>
+          </div>
+          <div class="form-group">
+            <label>Receive CompeteLeague Mail?</label>
+        		<input id="recieveMail" type="checkbox" /><p>YES</p><br>
+          </div>
+          <button class="btn btn-cl pull-right">Safe Changes</button>
+      	</form>
+    		<div class="clear"></div>
+        <hr>
+    		<h2>Account Deletion</h2>
+    		To delete your account click the "DELETE ACCOUNT" button below, and then confirm your desire to delete your account by inputting your password and clicking "DELETE ACCOUNT" again.<br>
+        <button class="btn btn-cl pull-right">DELETE ACCOUNT</button>
+    		<br><br><br>
+    		Return to your Account<br>
+        <button class="btn btn-cl pull-right">Back</button>
+    		<div class="clear spacer"></div>
+      </div>
+    </div>
+  </div>
+</div>

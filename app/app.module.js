@@ -9,20 +9,36 @@
 
 // Components
 angular.module('homeModule', [])
-angular.module('leagueModule', [])
+
 angular.module('headerModule', [])
 
+angular.module('profileModule', [])
+
+angular.module('accountModule', [])
+
+angular.module('freeAgentDatabaseModule', [])
+
 // Shared
-angular.module('sliderModule', ['ui.bootstrap'])
+angular.module('sliderModule', [])
+
+angular.module('userModule', [
+    'ngResource',
+    'LocalStorageModule'
+    ])
 
 // Base module
 angular.module('baseModule', [
+    // 'ngAnimate',
     'ngCookies',
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'angularModalService',
     'homeModule',
+    'headerModule',
+    'profileModule',
+    'accountModule',
     'sliderModule',
-    'leagueModule',
-    'headerModule'
+    'userModule',
+    'freeAgentDatabaseModule'
   ])

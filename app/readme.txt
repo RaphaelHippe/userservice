@@ -65,3 +65,10 @@ down.
 ATTENTION: I believe we can't use yeoman to create new controllers /directives /
 services anymore.
 So be sure you include the file in the index.html!
+
+
+ApplicationCtrl:
+
+I implemented a goTo(input) function. This is available in the whole application.
+So if you want to navigate somewhere just call $scope.goTo(input). Example:
+$scope.goTo('leagues');  

@@ -1,56 +1,56 @@
 <div id="background"> </div>
-<header ng-controller="HeaderCtrl">
-  <div id="navBar" >
-    <div class="clear"></div>
-    <div id="leftNav">
-      <ul id="serverNav">
-        <li>NA</li>
-        <li>&nbsp;|&nbsp;</li>
-        <li>EU</li>
-      </ul>
-      <div>&nbsp;</div>
-      <ul id="socialMediaNav">
-        <li><a ng-href="https://www.facebook.com/Competeleague" href="" target="_blank"><img src="../../assets/images/socialMedia/facebook_icon.png" /></a></li>
-        <li><a ng-href="https://twitter.com/CompeteLeague" href="" target="_blank"><img src="../../assets/images/socialMedia/twitter_icon.png" /></a></li>
-        <li><a ng-href="http://www.youtube.com/competeleague" href="" target="_blank"><img src="../../assets/images/socialMedia/youtube_icon.png" /></a></li>
-        <li><a ng-href="http://www.reddit.com/r/competeleague" href="" target="_blank"><img src="../../assets/images/socialMedia/reddit_icon.png" /></a></li>
-        <li><a ng-href="http://www.twitch.tv/CompeteLeague" href="" target="_blank"><img src="../../assets/images/socialMedia/twitch_icon.png" /></a></li>
-      </ul>
-        <div id="{{ twitchStatus }}"></div>
-    </div>
-    <div id="rightNav">
-      <div>
-        <ul id="userNav">
-          <li class="loginBtn">LOGIN</li>
-          <li class="joinBtn">JOIN</li>
-        </ul>
-      <!--
-        <ul id="userNavCheers">
-          <li>Welcome back username!</li>
-        </ul>
-        <br />
-        <ul id="userControls">
-          <li><a href="">Profile</a></li>
-          <li>&nbsp;|&nbsp;</li>
-          <li><a href="">Account</a></li>
-          <li>&nbsp;|&nbsp;</li>
-          <li><a id="logoutBtn" href="">Logout</a></li>
-        </ul>
-      -->
-      </div>
-
+  <header ng-controller="HeaderCtrl">
+    <div id="navBar">
       <div class="clear"></div>
+      <div id="leftNav">
+        <ul id="serverNav">
+          <li ng-click="testButton()">NA</li>
+          <li>&nbsp;|&nbsp;</li>
+          <li>EU</li>
+        </ul>
+        <div>&nbsp;</div>
+        <ul id="socialMediaNav">
+          <li><a ng-href="https://www.facebook.com/Competeleague" href="" target="_blank"><img src="../../assets/images/socialMedia/facebook_icon.png" /></a></li>
+          <li><a ng-href="https://twitter.com/CompeteLeague" href="" target="_blank"><img src="../../assets/images/socialMedia/twitter_icon.png" /></a></li>
+          <li><a ng-href="http://www.youtube.com/competeleague" href="" target="_blank"><img src="../../assets/images/socialMedia/youtube_icon.png" /></a></li>
+          <li><a ng-href="http://www.reddit.com/r/competeleague" href="" target="_blank"><img src="../../assets/images/socialMedia/reddit_icon.png" /></a></li>
+          <li><a ng-href="http://www.twitch.tv/CompeteLeague" href="" target="_blank"><img src="../../assets/images/socialMedia/twitch_icon.png" /></a></li>
+        </ul>
+          <div id="twitchNavOff"></div>
+      </div>
+      <div id="rightNav">
+        <div>
+          <ul id="userNav">
+            <li ng-click="showLogin()" class="pointer loginBtn">LOGIN</li>
+            <li ng-click="showJoin()" class="pointer joinBtn">JOIN</li>
+          </ul>
+        <!--
+          <ul id="userNavCheers">
+            <li>Welcome back username!</li>
+          </ul>
+          <br />
+          <ul id="userControls">
+            <li><a href="">Profile</a></li>
+            <li>&nbsp;|&nbsp;</li>
+            <li><a href="">Account</a></li>
+            <li>&nbsp;|&nbsp;</li>
+            <li><a id="logoutBtn" href="">Logout</a></li>
+          </ul>
+        -->
+        </div>
+
+        <div class="clear"></div>
+      </div>
+      <ul id="nav">
+        <li><a ng-href="#/home" href="">HOME</a></li>
+        <li><a ng-href="#/about" href="">ABOUT</a></li>
+        <li><a ng-href="#/leagues" href="">LEAGUES</a></li>
+        <li><a ng-href="#/news" href="">NEWS</a></li>
+        <li><a ng-href="#/sponsors" href="">SPONSORS</a></li>
+        <li><a ng-href="#/contact" href="">CONTACT</a></a></li>
+      </ul>
     </div>
-    <ul id="nav">
-      <li><a ng-href="#/home" href="">HOME</a></li>
-      <li><a ng-href="#/about" href="">ABOUT</a></li>
-      <li><a ng-href="#/leagues" href="">LEAGUES</a></li>
-      <li><a ng-href="#/news" href="">NEWS</a></li>
-      <li><a ng-href="#/sponsors" href="">SPONSORS</a></li>
-      <li><a ng-href="#/contact" href="">CONTACT</a></a></li>
-    </ul>
-  </div>
-  <div class="clear"></div>
-  <div id="logo"><a ng-href="#/" href=""><img src="../../assets/images/logo.png" /></a></div>
-  <div class="clear"></div>
-</header>
+    <div class="clear"></div>
+    <div id="logo"><a ng-href="#/" href=""><img src="../../assets/images/logo.png" /></a></div>
+    <div class="clear"></div>
+  </header>

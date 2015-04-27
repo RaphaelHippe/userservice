@@ -1,0 +1,83 @@
+<div ng-if="!currentUser">
+  please login
+</div>
+<div ng-if="currentUser">
+  <div class="textContent">
+      <div class="spacer"></div>
+      <h1 ng-bind="profileUser.display"></h1>
+      <div class="right">
+        <img src="../../assets/images/userIcons/defaultUserIcon.png" />
+      </div>
+      <div class="clear spacer"></div>
+  </div>
+  <div ng-switch="profileUser.member_group">
+    <div ng-switch-when="base">
+      <!-- Base User -->
+      <div class="textContent">
+			<h1>To create a Public Profile Page you need to be registered as Free Agent or a Staff Member</h1>
+			<div class="textCentered">
+				<button class="btn btn-cl">Free Agent</button>
+          <button class="btn btn-cl">Staff Application</button>
+			</div>
+		</div>
+    </div>
+    <div ng-switch-when="freeAgent">
+      <!-- free Agent -->
+      <div class="textContent">
+        <h2>Player Stats</h2>
+        <div class="pull-right">
+          <div class="accountPlayerStats">
+            <div class="accountPlayerName" ng-bind="profileUser.display"></div>
+            <div class="accountPlayerTeamIcon"></div>
+            <div class="accountPlayerIcon"></div>
+            <div class="accountPlayerKDA">13.5</div>
+            <div class="accountPlayerGPM">425</div>
+            <div class="accountPlayerCSPM">6.5</div>
+          </div>
+        </div>
+        <div class="clear spacer"></div>
+      </div>
+    </div>
+    <div ng-switch-default>
+      <!-- player / substitute / captain  -->
+      <div class="textContent">
+        <h2>Player and Team Stats</h2>
+        <div class="pull-left">
+          <div class="teamStats">
+            <div class="teamName">YouchraLand</div>
+            <div class="teamIcon"></div>
+            <div class="teamClLeague">Diamond and Above</div>
+            <div class="teamClRank">4</div>
+            <div class="teamGamesPlayed">20</div>
+            <div class="teamWLRecord">14/6</div>
+            <div class="teamTotalKD">98/72</div>
+            <div class="teamMVP">Youchra</div>
+          </div>
+          <div class="teamRoster">
+            <div class="teamTopLaner">Youchra</div>
+            <div class="teamJungle">Youchra</div>
+            <div class="teamMidLaner">Youchra</div>
+            <div class="teamMarksman">Youchra</div>
+            <div class="teamSupport">Youchra</div>
+            <div class="teamSubstituteOne">Youchra</div>
+            <div class="teamSubstituteTwo">Youchra</div>
+            <div class="teamSubstituteThree">Youchra</div>
+            <div class="teamSubstituteFour">Youchra</div>
+          </div>
+        </div>
+        <div class="pull-right">
+          <div class="accountPlayerStats">
+            <div class="accountPlayerName" ng-bind="profileUser.display"></div>
+            <div class="accountPlayerTeamIcon"></div>
+            <div class="accountPlayerIcon"></div>
+            <div class="accountPlayerKDA">13.5</div>
+            <div class="accountPlayerGPM">425</div>
+            <div class="accountPlayerCSPM">6.5</div>
+          </div>
+
+        </div>
+        <div class="clear spacer"></div>
+      </div>
+    </div>
+  </div>
+</div>
