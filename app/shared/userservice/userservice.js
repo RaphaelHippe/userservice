@@ -95,7 +95,7 @@ angular.module('userModule')
         });
         return returnArray;
       })
-      console.log("promise", promise);
+      // console.log("promise", promise);
       return promise;
 
 

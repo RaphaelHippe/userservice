@@ -7,7 +7,8 @@ angular.module('userModule')
                         {
                           register: {
                             method: 'POST',
-                            url: 'http://api.competeleague.com/user/register'
+                            url: 'http://api.competeleague.com/user/register',
+                            data: {display: '@_display', email: '@_email', password: '@_password', region: '@_region'}
                           }
                         }
                       );

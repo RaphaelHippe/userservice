@@ -161,9 +161,9 @@ a {
 
 .modal-dialog {
 	-webkit-box-shadow: 8px 6px 18px 2px rgba(168, 2, 0, 0.60), -8px -6px 18px 2px rgba(168, 2, 0, 0.75);
--moz-box-shadow:    8px 6px 18px 2px rgba(168, 2, 0, 0.60), -6px -8px 18px 2px rgba(71, 126, 188, 0.75);
-box-shadow:         8px 6px 18px 2px rgba(168, 2, 0, 0.60), -6px -8px 18px 2px rgba(71, 126, 188, 0.75);
-width: 800px;
+	-moz-box-shadow:    8px 6px 18px 2px rgba(168, 2, 0, 0.60), -6px -8px 18px 2px rgba(71, 126, 188, 0.75);
+	box-shadow:         8px 6px 18px 2px rgba(168, 2, 0, 0.60), -6px -8px 18px 2px rgba(71, 126, 188, 0.75);
+	width: 600px;
 }
 
 
@@ -263,7 +263,17 @@ header li{
 	padding: 10px;
 	padding-top: 0px;
 	color: #FFFFFF;
+	cursor: pointer;
 }
+
+.serverNavNaActive {
+	color: #e7908e;
+}
+
+.serverNavEuActive {
+	color: #7eb0db;
+}
+
 #socialMediaNav{
 	margin-top: -18px;
 	padding-left: 8px;
