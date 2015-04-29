@@ -33,7 +33,7 @@ module.directive('disableAnimation', function($animate){
     }
 });
 
-module.directive('carouselControllerProvider', function($timeout){
+/*module.directive('carouselControllerProvider', function($timeout){
   return {
         scope: {
           counter: "=",
@@ -69,4 +69,4 @@ module.directive('carouselControllerProvider', function($timeout){
          });
        }
     };
-});
+});*/
