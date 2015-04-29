@@ -63,9 +63,17 @@ angular.module('baseModule')
         controller: 'HomeCtrl' //diamondOpenCtrl
     })
     /* PROFILE AND ACCOUNT */
-    .when('/profile', {
+    .when('/profile:id', {
         templateUrl: 'components/profile/profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        // resolve: {
+        //   profileUser: function ($routeParams, UserService) {
+        //     UserService.getUserById({id: $routeParams.id}).$promise.then(function (res) {
+        //       console.log('ngroute', res);
+        //       return res;
+        //     })
+        //   }
+        // }
     })
     .when('/account', {
         templateUrl: 'components/account/account.html',
