@@ -3,10 +3,10 @@
     <div id="navBar">
       <div class="clear"></div>
       <div id="leftNav">
-        <ul id="serverNav">
-          <li ng-click="testButton()">NA</li>
+        <ul id="serverNav" ng-click="switchRegion()">
+          <li ng-class="{serverNavEuActive: region==='EU'}">EU</li>
           <li>&nbsp;|&nbsp;</li>
-          <li>EU</li>
+          <li ng-class="{serverNavNaActive: region==='NA'}">NA</li>
         </ul>
         <div>&nbsp;</div>
         <ul id="socialMediaNav">

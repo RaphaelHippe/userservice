@@ -1,9 +1,19 @@
 angular.module('baseModule')
-  .controller('ApplicationCtrl', function ($scope, $location, UserService) {
+  .controller('ApplicationCtrl', function ($scope, $rootScope, $location, UserService) {
 
     // NA / EU switch
-    $scope.region = 'eu';
+    $rootScope.region = 'EU';
 
+    $scope.switchRegion = function () {
+      var myRegion = $rootScope.region;
+      if (myRegion === 'EU') {
+        $rootScope.region = 'NA';
+      }
+      if (myRegion === 'NA') {
+        $rootScope.region = 'EU';
+      }
+      console.log('Current Region: ', $scope.region);
+    }
 
     UserService.setEventScope($scope);
     UserService.setUserScope($scope);
@@ -43,10 +53,10 @@ angular.module('baseModule')
     $scope.user = {};
 
     $scope.getUsers = function () {
-      console.log("appl", UserService.getAllUsers());
+      // console.log("appl", UserService.getAllUsers());
       UserService.getAllUsers().then(function (res) {
         $scope.users = res;
-        console.log("test");
+        // console.log("test");
       })
     }
 
@@ -54,21 +64,15 @@ angular.module('baseModule')
       UserService.getUserById({id: 1}).$promise.then(function (res) {
         $scope.user = res;
       }, function (error) {
-        console.log("error", error);
+        // console.log("error", error);
       });
     }
-
-    $scope.registerUser = function () {
-      UserService.register('display', 'email', 'password', 'region');
-    }
-
-    $scope.registerUser();
     $scope.getUsers();
     $scope.getUser();
     $scope.testButton = function () {
       console.log('query', $scope.users);
       console.log('get', $scope.user);
-      console.log('user[0]', $scope.users[0].display);
+      console.log('user[0]', $scope.users[3].display);
     };
 
     $scope.logout = function () {

@@ -1,6 +1,5 @@
 angular.module('headerModule')
-  .controller('HeaderCtrl', function ($scope, ModalService) {
-
+  .controller('HeaderCtrl', function ($scope, ModalService, UserService) {
 
     $scope.showLogin = function () {
 
@@ -34,7 +33,11 @@ angular.module('headerModule')
 
     };
 
-
+    $scope.registerUser = function () {
+      UserService.register({display: "youchra3", email: "youchra3@competeleague.com", password: "Password123", region:"EU"}).$promise.then(function (res) {
+        console.log(res);
+      });
+    }
 
 
   });
