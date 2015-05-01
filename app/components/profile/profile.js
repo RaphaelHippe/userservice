@@ -1,5 +1,6 @@
 angular.module('profileModule')
-  .controller('ProfileCtrl', function ($scope, $routeParams, UserService) {
+  .controller('ProfileCtrl', ['$scope', '$routeParams', 'UserService',
+   function ($scope, $routeParams, UserService) {
     $scope.profileUser = null;
 
     $scope.getProfileUser = function () {
@@ -9,4 +10,4 @@ angular.module('profileModule')
       })
     };
     $scope.getProfileUser();
-  });
+  }]);

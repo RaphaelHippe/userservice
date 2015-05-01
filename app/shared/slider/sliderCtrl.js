@@ -8,7 +8,8 @@
  * Controller of the webappApp
  */
 angular.module('sliderModule').
-  controller('SliderCtrl', function ($scope) {
+  controller('SliderCtrl', ['$scope',
+   function ($scope) {
     $scope.images = [{
       src: 'slide_two.png',
       link: 'leagues',
@@ -22,4 +23,4 @@ angular.module('sliderModule').
       link: 'contact',
       title: 'Pic 3'
     }];
-  });
+  }]);

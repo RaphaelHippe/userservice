@@ -8,7 +8,8 @@
  * Service in the exampleApp.
  */
 angular.module('userModule')
-  .factory('UserService', function (Session, User, $q, localStorageService) {
+  .factory('UserService', ['Session', 'User', '$q', 'localStorageService',
+   function (Session, User, $q, localStorageService) {
     var usr = {};
     usr._eventScope = null;
 
@@ -87,7 +88,7 @@ angular.module('userModule')
               return usr._accounts[i];
         }
       }
-          usr._myEventScope.$broadcast(USER_EVENTS.loginFailed);
+          // usr._myEventScope.$broadcast(USER_EVENTS.loginFailed);
           return null;
     };
 
@@ -181,7 +182,7 @@ angular.module('userModule')
       },
     }
 
-  });
+  }]);
 
 
 

@@ -1,5 +1,6 @@
 angular.module('headerModule')
-  .controller('HeaderCtrl', function ($scope, ModalService, $rootScope, UserService) {
+  .controller('HeaderCtrl', ['$scope', 'ModalService', '$rootScope', 'UserService',
+  function ($scope, ModalService, $rootScope, UserService) {
 
     $scope.showLogin = function () {
 
@@ -37,4 +38,4 @@ angular.module('headerModule')
     $scope.logout = function () {
       UserService.logout();
     }
-  });
+  }]);

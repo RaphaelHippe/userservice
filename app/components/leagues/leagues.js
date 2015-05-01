@@ -1,7 +1,8 @@
 var module = angular.module('leagueModule', ['ui.select', 'ngSanitize']);
 var apiKey = "5801c4b7-bde8-4bfe-b071-89881d00a06c";
 
-module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionService, PlayerService, StatsService) {
+module.controller('LeaguesCtrl',['$scope', '$http', 'GameService', 'ChampionService', 'PlayerService', 'StatsService',
+ function ($scope, $http, GameService, ChampionService, PlayerService, StatsService) {
   $('#spinner').hide();
   $('#playerTitle').hide();
   $scope.gameData;
@@ -60,7 +61,7 @@ module.controller('LeaguesCtrl', function ($scope, $http, GameService, ChampionS
       });
     });
   }
-});
+}]);
 
 function statsExtractor(player, item, team){
   if(player.championId == item.championId && item.teamId == team){
@@ -84,7 +85,8 @@ function statsExtractor(player, item, team){
   }
 }
 
-module.factory("ChampionService", function($http){
+module.factory("ChampionService", ['$http',
+ function($http){
   var champService = {
     getAllChampions: function(){
       var promise = $http.get('https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?api_key='+apiKey, { cache: true}).then(function(riotResponse){
@@ -111,9 +113,10 @@ module.factory("ChampionService", function($http){
     }
   };
   return champService;
-});
+}]);
 
-module.factory("GameService", function($http, $q, ChampionService){
+module.factory("GameService", ['$http', '$q', 'ChampionService',
+ function($http, $q, ChampionService){
   var sumId;
   var data;
   var gameData;
@@ -161,9 +164,10 @@ module.factory("GameService", function($http, $q, ChampionService){
     }
   };
   return gameService;
-});
+}]);
 
-module.factory("PlayerService", function($http){
+module.factory("PlayerService", ['$http',
+ function($http){
   var playerService = {
     getPlayerNamesByIdArray: function(array){
       var idString = "";
@@ -177,9 +181,10 @@ module.factory("PlayerService", function($http){
     }
   }
   return playerService;
-});
+}]);
 
-module.factory("StatsService", function($http){
+module.factory("StatsService", ['$http',
+ function($http){
   var statsService = {
     getPlayerStatsForGame: function(game){
       var promise = $http.get('https://euw.api.pvp.net/api/lol/euw/v2.2/match/'+game+'?includeTimeline=false&api_key='+apiKey, { cache: true}).then(function(riotResponse){
@@ -189,7 +194,7 @@ module.factory("StatsService", function($http){
     }
   }
   return statsService;
-});
+}]);
 
 module.directive('playerDataDir', function() {
     return {

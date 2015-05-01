@@ -1,5 +1,6 @@
 angular.module('baseModule')
-  .controller('ApplicationCtrl', function ($scope, $rootScope, $location, UserService, localStorageService) {
+  .controller('ApplicationCtrl',['$scope', '$rootScope', '$location', 'UserService', 'localStorageService',
+     function ($scope, $rootScope, $location, UserService, localStorageService) {
 
     // NA / EU switch
     $rootScope.region = localStorageService.get('region') || 'EU';
@@ -56,4 +57,4 @@ angular.module('baseModule')
     $scope.goTo = function (input) {
       $location.path(input);
     };
-  });
+  }]);

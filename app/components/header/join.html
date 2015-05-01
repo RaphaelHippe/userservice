@@ -16,7 +16,7 @@
           <br>
           For your own safety we advise that your password does not contain your username, email address, or any other form of publicly viewable ID.
         </p>
-        <form name="JoinForm" ng-submit="close(joinForm)" novalidate>
+        <form role="form" name="JoinForm" ng-submit="close(joinForm)" novalidate>
           <div class="form-group">
             <label>Display Name:</label>
             <input type="text" class="form-control" ng-model="joinForm.display" ng-minlength="3" ng-maxlength="16" name="display" required/>
@@ -32,6 +32,10 @@
           <div class="form-group">
             <label>Confirm Password:</label>
             <input type="password" class="form-control" ng-model="joinForm.confirmPassword" name="confirmpassword" required/>
+          </div>
+          <div class="form-group">
+            <label>Accept <a href="#/terms-and-conditions" target="_blank">Terms & Conditions</a></label>
+            <input type="checkbox" ng-model="joinForm.termsAndConditions" name="acceptTermsAndConditions" required />
           </div>
           <p class="pull-left">
             Need help with the english language? <br>Maybe we can help out: <button ng-click="showTranslationHelp=!showTranslationHelp" class="btn btn-xs btn-success">Translation Help</button>

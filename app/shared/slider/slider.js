@@ -1,6 +1,7 @@
 var module = angular.module('sliderModule', ['ui.bootstrap']);
 
-module.controller('SliderCtrl', function ($scope) {
+module.controller('SliderCtrl', ['$scope',
+ function ($scope) {
   $scope.myInterval = 5000;
   $scope.counter = 0;
   $scope.slides = [{
@@ -19,10 +20,11 @@ module.controller('SliderCtrl', function ($scope) {
       text: "Contact"
     }
   ];
-});
+}]);
 
 //needed for the imcompatiblity with ngAnimate
-module.directive('disableAnimation', function($animate){
+module.directive('disableAnimation', ['$animate',
+ function($animate){
     return {
         restrict: 'A',
         link: function($scope, $element, $attrs){
@@ -31,7 +33,7 @@ module.directive('disableAnimation', function($animate){
             });
         }
     }
-});
+}]);
 
 /*module.directive('carouselControllerProvider', function($timeout){
   return {

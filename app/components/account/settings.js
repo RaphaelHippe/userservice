@@ -1,4 +1,5 @@
 angular.module('accountModule')
-  .controller('SettingsCtrl', function ($scope) {
+ .controller('SettingsCtrl', ['$scope',
+  function ($scope) {
 
-  });
+  }]);

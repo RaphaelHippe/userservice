@@ -1,5 +1,6 @@
 angular.module('headerModule')
-  .controller('LoginCtrl', function ($scope, close) {
+  .controller('LoginCtrl', ['$scope', 'close',
+   function ($scope, close) {
     $scope.credentials = {
       email: '',
       password: ''
@@ -10,4 +11,4 @@ angular.module('headerModule')
       close(result);
     };
 
-  });
+  }]);
