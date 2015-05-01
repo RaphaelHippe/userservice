@@ -1,5 +1,5 @@
 angular.module('headerModule')
-  .controller('HeaderCtrl', function ($scope, ModalService, UserService) {
+  .controller('HeaderCtrl', function ($scope, ModalService, $rootScope, UserService) {
 
     $scope.showLogin = function () {
 
@@ -7,11 +7,9 @@ angular.module('headerModule')
         templateUrl: "components/header/login.html",
         controller: "LoginCtrl"
       }).then(function(modal) {
-
-        //it's a bootstrap element, use 'modal' to show it
         modal.element.modal();
         modal.close.then(function(result) {
-          console.log(result);
+          UserService.authenticate(result);
         });
       });
 
@@ -23,21 +21,20 @@ angular.module('headerModule')
         templateUrl: "components/header/join.html",
         controller: "JoinCtrl"
       }).then(function(modal) {
-
-        //it's a bootstrap element, use 'modal' to show it
         modal.element.modal();
         modal.close.then(function(result) {
-          console.log(result);
+          if (result !== 'Cancel') {
+            console.log("in header", result);
+            UserService.register({display: result.display, email: result.email, password: result.password, region: $rootScope.region}).$promise.then(function (res) {
+              console.log(res);
+            });
+          }
         });
       });
 
     };
 
-    $scope.registerUser = function () {
-      UserService.register({display: "youchra3", email: "youchra3@competeleague.com", password: "Password123", region:"EU"}).$promise.then(function (res) {
-        console.log(res);
-      });
+    $scope.logout = function () {
+      UserService.logout();
     }
-
-
   });

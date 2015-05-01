@@ -7,13 +7,16 @@
       </div>
       <div class="modal-body" ng-init="showTranslationHelp=false">
         <p>
+          Please note your Display Name must respect the following rules:<br>
+          - It must contain between 3 and 16 characters with no spaces.<br>
+          - It must not contain explicit language.<br><br>
           Please note your password must respect the following rules:<br>
           - It must contain a minimum of 6 characters with no spaces.<br>
           - It must contain a minimum of one numeric character.<br>
           <br>
           For your own safety we advise that your password does not contain your username, email address, or any other form of publicly viewable ID.
         </p>
-        <form name="JoinForm" ng-submit="registerUser()" novalidate>
+        <form name="JoinForm" ng-submit="close(joinForm)" novalidate>
           <div class="form-group">
             <label>Display Name:</label>
             <input type="text" class="form-control" ng-model="joinForm.display" ng-minlength="3" ng-maxlength="16" name="display" required/>
@@ -35,14 +38,14 @@
           </p>
           <div class="pull-right">
             <button type="button" ng-click="close('Cancel')" class="btn btn-lg btn-cl" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn btn-lg btn-cl" ng-disabled="JoinForm.$invalid || joinForm.password !== joinForm.confirmPassword">Join</button>
+            <button type="submit" class="btn btn-lg btn-cl" ng-disabled="JoinForm.$invalid || joinForm.password !== joinForm.confirmPassword" data-dismiss="modal">Join</button>
           </div>
         </form>
         <div class="clear"></div>
         <p ng-show="showTranslationHelp">
           German - Deutsch: Youchra<br>
-          Spanish - Espagnol: Mindmesser<br>
-          French - Francaise: GreenScare<br>
+          Spanish - Español: Mindmesser<br>
+          French - Français: GreenScare<br>
           etc etc etc...
         </p>
       </div>

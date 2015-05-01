@@ -8,41 +8,64 @@
  * Service in the exampleApp.
  */
 angular.module('userModule')
-  .factory('UserService', function (Session, User,
-    $location, $q, localStorageService) {
+  .factory('UserService', function (Session, User, $q, localStorageService) {
     var usr = {};
     usr._eventScope = null;
 
     // instead of http / resource
     usr._user = {
-      id: 1,
-      name: 'John',
-      username: 'admin',
+      admin_group: 'none',
+      created_at: "2015-04-02 10:26:43",
       password: 'admin',
-      role: 'admin'
+      disabled: 0,
+      display: "admin",
+      email: "admin@competeleague.com",
+      id: 1,
+      league_id: 0,
+      team_id: 1,
+      updated_at: "2015-04-02 10:26:43",
+      member_group: "player"
+    };
+    usr._user1 = {
+      admin_group: 'none',
+      created_at: "2015-04-02 10:26:43",
+      password: 'player',
+      disabled: 0,
+      display: "player",
+      email: "player@competeleague.com",
+      id: 2,
+      league_id: 0,
+      team_id: 1,
+      updated_at: "2015-04-02 10:26:43",
+      member_group: "player"
     };
     usr._user2 = {
-      id: 2,
-      name: 'Mike',
-      username: 'user',
-      password: 'user',
-      role: 'user'
+      admin_group: 'none',
+      created_at: "2015-04-02 10:26:43",
+      password: 'captain',
+      disabled: 0,
+      display: "captain",
+      email: "captain@competeleague.com",
+      id: 3,
+      league_id: 0,
+      team_id: 1,
+      updated_at: "2015-04-02 10:26:43",
+      member_group: "player"
     };
     usr._user3 = {
-      id: 3,
-      name: 'Anna',
-      username: 'user2',
-      password: 'user2',
-      role: 'user'
-    };
-    usr._user4 = {
+      admin_group: 'none',
+      created_at: "2015-04-02 10:26:43",
+      password: 'base',
+      disabled: 0,
+      display: "base",
+      email: "base@competeleague.com",
       id: 4,
-      name: 'Tom',
-      username: 'admin2',
-      password: 'admin2',
-      role: 'admin'
+      league_id: 0,
+      team_id: 1,
+      updated_at: "2015-04-02 10:26:43",
+      member_group: "base"
     };
-    usr._accounts = [usr._user, usr._user2, usr._user3, usr._user4];
+    usr._accounts = [usr._user, usr._user2, usr._user3];
     usr._sessionId = 1;
     usr._myEventScope;
     usr._myUserScope;
@@ -55,13 +78,12 @@ angular.module('userModule')
     // API usage
     usr.authenticate = function (credentials) {
       for (var i = 0; i < usr._accounts.length; i++) {
-        if (usr._accounts[i].username === credentials.username &&
+        if (usr._accounts[i].email === credentials.email &&
             usr._accounts[i].password === credentials.password) {
-              Session.create(usr._sessionId, usr._accounts[i].id, usr._accounts[i].role);
-              usr._myEventScope.$broadcast(USER_EVENTS.loginSuccess);
+              Session.create(usr._sessionId, usr._accounts[i].id, usr._accounts[i].member_group);
+              // usr._myEventScope.$broadcast(USER_EVENTS.loginSuccess);
               localStorageService.set('user', usr._accounts[i]);
               setCurrentUser(usr._accounts[i]);
-              $location.path(WELCOME_VIEW.path);
               return usr._accounts[i];
         }
       }
@@ -72,7 +94,6 @@ angular.module('userModule')
     usr.logout = function () {
       setCurrentUser(null);
       localStorageService.set('user', null);
-      $location.path(WELCOME_VIEW.path);
       Session.destroy();
     };
 

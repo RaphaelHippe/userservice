@@ -1,53 +1,27 @@
 angular.module('baseModule')
-  .controller('ApplicationCtrl', function ($scope, $rootScope, $location, UserService) {
+  .controller('ApplicationCtrl', function ($scope, $rootScope, $location, UserService, localStorageService) {
 
     // NA / EU switch
-    $rootScope.region = 'EU';
+    $rootScope.region = localStorageService.get('region') || 'EU';
 
     $scope.switchRegion = function () {
       var myRegion = $rootScope.region;
       if (myRegion === 'EU') {
         $rootScope.region = 'NA';
+        localStorageService.set('region', 'NA');
       }
       if (myRegion === 'NA') {
         $rootScope.region = 'EU';
+        localStorageService.set('region', 'EU');
       }
       console.log('Current Region: ', $scope.region);
+      console.log("current User", $scope.currentUser);
     }
 
     UserService.setEventScope($scope);
     UserService.setUserScope($scope);
+    $scope.isAuthorized = UserService.isAuthorized;
     // $scope.userRoles = USER_ROLES;
-    // $scope.isAuthorized = UserService.isAuthorized;
-
-    // dev current user to set up account and profile page:
-    $scope.currentUser = {
-      admin_group: 'none',
-      created_at: "2015-04-02 10:26:43",
-      disabled: 0,
-      display: "Youchra",
-      email: "admin@competeleague.com",
-      id: 1,
-      league_id: 0,
-      team_id: 1,
-      updated_at: "2015-04-02 10:26:43",
-      member_group: "player"
-    };
-
-    // dev profile user to set up profile page:
-    $scope.profileUser = {
-      admin_group: 'none',
-      created_at: "2015-04-02 10:26:43",
-      disabled: 0,
-      display: "Mindmesser",
-      email: "admin@competeleague.com",
-      id: 2,
-      league_id: 0,
-      team_id: 1,
-      updated_at: "2015-04-02 10:26:43",
-      member_group: "player"
-    };
-
 
     $scope.users = [];
     $scope.user = {};

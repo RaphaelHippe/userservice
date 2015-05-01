@@ -29,10 +29,14 @@ h4{
 	margin-left: 0px;
 }
 
+/*a:focus,
+a:hover,
+a:active,*/
 a {
 	text-decoration: none;
 	color: #808080;
 }
+
 
 .clear{
 	clear: both;
@@ -349,6 +353,7 @@ header li{
 #nav li{
 	padding: 10px;
 }
+#nav li a:focus,
 #nav li a{
 	color: #FFFFFF;
 	font-weight: bold;

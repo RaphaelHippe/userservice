@@ -1,9 +1,6 @@
 <div ng-if="!currentUser">
   <div class="textContent">
 		<h2>Please login to see this part of the website</h2>
-		<div class="textCentered">
-      <button class="btn btn-cl">Login</button>
-		</div>
   </div>
 </div>
 <div ng-if="currentUser">
@@ -36,7 +33,7 @@
         <!--upgradeAccount-->
         <h2>Information and being a Free Agent</h2>
         You're currently a Free Agent! You're listed on our free agent database under the summoner name X. You can view the free agent database to find other free agents and form a team! To view other free agents go to the database via the button below, filter for a player via rank and click their Display Name to see their Profile page. From here you can see their details, and if you want to form a team with them you can get in touch by leaving a comment below their profile or email them via the "message" button. You can edit your own Player Profile by following the "My Player Profile Page" link above.<br>
-        <button class="btn btn-cl pull-left">Free Agent Database</button>
+        <button ng-click="goTo('/free-agent-database')" class="btn btn-cl pull-left">Free Agent Database</button>
         <div class="clear spacer"></div>
         <div ng-include="'components/account/accountJobApplication.html'"></div>
 				<h2>Create a Team</h2> <!--upgradeAccount-->
@@ -59,7 +56,7 @@
         <div class="pull-right">
           <h2>Free Agent Database</h2>
           The free agent database is a good place to find substitutes or new players if you are in need!<br>
-          <button class="btn btn-cl pull-left">Free Agent Database</button>
+          <button ng-click="goTo('/free-agent-database')" class="btn btn-cl pull-left">Free Agent Database</button>
           <div class="spacer"></div>
         <div ng-include="'components/account/accountRuleset.html'"></div>
         </div>
@@ -131,7 +128,7 @@
         <div class="pull-right">
           <h2>Free Agent Database</h2>
           The free agent database is a good place to find substitutes or new players if you are in need!<br>
-          <button class="btn btn-cl pull-left">Free Agent Database</button>
+          <button ng-click="goTo('/free-agent-database')" class="btn btn-cl pull-left">Free Agent Database</button>
           <div class="spacer"></div>
         <div ng-include="'components/account/accountRuleset.html'"></div>
         </div>
