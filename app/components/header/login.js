@@ -8,7 +8,7 @@ angular.module('headerModule')
     // $scope.$on(USER_EVENTS.loginFailed, $scope.setLoginFailed);
     $scope.close = function (result) {
       console.log("test in loginjs", result);
-      close(result);
+      close(result, 500);
     };
 
   }]);

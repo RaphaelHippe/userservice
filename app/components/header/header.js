@@ -24,12 +24,15 @@ angular.module('headerModule')
       }).then(function(modal) {
         modal.element.modal();
         modal.close.then(function(result) {
+          console.log("test", result);
           if (result !== 'Cancel') {
             console.log("in header", result);
             UserService.register({display: result.display, email: result.email, password: result.password, region: $rootScope.region}).$promise.then(function (res) {
               console.log(res);
             });
           }
+        }, function (err) {
+          console.log("err", err);
         });
       });
 

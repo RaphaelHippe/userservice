@@ -8,7 +8,7 @@ angular.module('headerModule')
       termsAndConditions: false
     };
     $scope.close = function (result) {
-      close(result);
+      close(result, 500);
     };
 
     $scope.customFormOptions = {
