@@ -2,7 +2,7 @@
   Here we will declare all the routes. Routes are part of the baseModule.
 */
 angular.module('baseModule')
-  .config(function ($routeProvider) {
+  .config(["$routeProvider", function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'components/home/home.html',
@@ -87,4 +87,4 @@ angular.module('baseModule')
       .otherwise({
         redirectTo: '/'
       })
-  })
+  }])

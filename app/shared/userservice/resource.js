@@ -1,6 +1,6 @@
 angular.module('userModule')
   .provider('User', function(){
-    this.$get = function ($resource) {
+    this.$get = ["$resource", function ($resource) {
       var url = 'http://api.competeleague.com/user/:id';
       return $resource(url,
                         {id: '@_id'},
@@ -12,7 +12,7 @@ angular.module('userModule')
                           }
                         }
                       );
-    };
+    }];
 });
 
 
