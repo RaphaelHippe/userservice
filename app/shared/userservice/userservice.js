@@ -77,19 +77,33 @@ angular.module('userModule')
     };
 
     // API usage
+
+    // old fake data authenticate
+    // usr.authenticate = function (credentials) {
+    //   for (var i = 0; i < usr._accounts.length; i++) {
+    //     if (usr._accounts[i].email === credentials.email &&
+    //         usr._accounts[i].password === credentials.password) {
+    //           Session.create(usr._sessionId, usr._accounts[i].id, usr._accounts[i].member_group);
+    //           // usr._myEventScope.$broadcast(USER_EVENTS.loginSuccess);
+    //           localStorageService.set('user', usr._accounts[i]);
+    //           setCurrentUser(usr._accounts[i]);
+    //           return usr._accounts[i];
+    //     }
+    //   }
+    //       // usr._myEventScope.$broadcast(USER_EVENTS.loginFailed);
+    //       return null;
+    // };
+
     usr.authenticate = function (credentials) {
-      for (var i = 0; i < usr._accounts.length; i++) {
-        if (usr._accounts[i].email === credentials.email &&
-            usr._accounts[i].password === credentials.password) {
-              Session.create(usr._sessionId, usr._accounts[i].id, usr._accounts[i].member_group);
-              // usr._myEventScope.$broadcast(USER_EVENTS.loginSuccess);
-              localStorageService.set('user', usr._accounts[i]);
-              setCurrentUser(usr._accounts[i]);
-              return usr._accounts[i];
-        }
-      }
-          // usr._myEventScope.$broadcast(USER_EVENTS.loginFailed);
-          return null;
+      console.log(credentials);
+      User.authenticate({email: credentials.email, password: credentials.password}).$promise.then(function (res) {
+        // Session.create(usr._sessionId, usr._accounts[1].id, usr._accounts[1].member_group);
+        localStorageService.set('user', res.data);
+        setCurrentUser(res.data);
+        return res.data;
+      }, function () {
+        return null
+      })
     };
 
     usr.logout = function () {
@@ -106,7 +120,7 @@ angular.module('userModule')
        usr._myUserScope = scope;
        usr._myUserScope.currentUser = localStorageService.get('user');
     };
-// dat liam :D unterbricht uns einfach haha
+
     usr.getAllUsers = function () {
       var returnArray = [];
       var promises = [];
@@ -119,34 +133,6 @@ angular.module('userModule')
       })
       // console.log("promise", promise);
       return promise;
-
-
-
-
-      //
-      // .$promise.then(function (data) {
-      //   console.log("array", array);
-      //   console.log("data", data);
-      //   angular.forEach(array, function (data) {
-      //     console.log("input", data);
-      //     var promise = data.then(function (res) {
-      //       console.log("hier rein? ", res);
-      //       returnArray.push(res);
-      //     }, function (error) {
-      //       console.log("error", error);
-      //     });
-      //     promises.push(promise);
-      //   });
-      //
-      // })
-      //
-      //   var qall = $q.all(promises).then(function () {
-      //     console.log("teste",returnArray);
-      //     return returnArray;
-      //   });
-      //   return qall;
-
-
     };
 
     usr.getUserById = function (id) {
