@@ -1,6 +1,22 @@
 angular.module('baseModule')
-  .controller('ApplicationCtrl',['$scope', '$rootScope', '$location', 'UserService', 'localStorageService',
-     function ($scope, $rootScope, $location, UserService, localStorageService) {
+.config(function($httpProvider){
+   delete $httpProvider.defaults.headers.common['X-Requested-With'];
+})
+  .controller('ApplicationCtrl',['$scope', '$rootScope', '$location', 'UserService', 'localStorageService', '$http',
+     function ($scope, $rootScope, $location, UserService, localStorageService, $http) {
+
+    $scope.method = 'POST';
+    $scope.url = 'http://api.competeleague.com/user/register';
+
+    $http({
+        method: $scope.method,
+        url: $scope.url,
+        data: {email: "gellis@arcadia.edu", password: "Password"}
+      }).then(function (res) {
+        console.log('test', res);
+      }, function (err) {
+        console.log('err', err);
+      })
 
     // NA / EU switch
     $rootScope.region = localStorageService.get('region') || 'EU';

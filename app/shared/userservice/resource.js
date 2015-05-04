@@ -1,4 +1,7 @@
 angular.module('userModule')
+  // .config(function($httpProvider){
+  //    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  // })
   .provider('User', function(){
     this.$get = ["$resource", function ($resource) {
       var url = 'http://api.competeleague.com/user/:id';

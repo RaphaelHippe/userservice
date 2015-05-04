@@ -71,6 +71,14 @@ angular.module('userModule')
     usr._myEventScope;
     usr._myUserScope;
 
+    // function testLogin() {
+    //   User.authenticate({email: "gellis@arcadia.edu", password: "Password"}).$promise.then(function (res) {
+    //     console.log(res);
+    //   })
+    // }
+
+    // testLogin();
+
     // helper functions
     var setCurrentUser = function (user) {
       usr._myUserScope.currentUser = user;
